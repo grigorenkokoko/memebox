@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/resource">
+        <file>img/memebox.png</file>
+        <file>img/add.png</file>
+        <file>img/free-icon-exit-1286853.png</file>
+        <file>img/free-icon-open-folder-outline-25402.png</file>
+        <file>mem/mem1.jpg</file>
+        <file>mem/mem2.jpg</file>
+        <file>mem/mem0.jpg</file>
+    </qresource>
+</RCC>
