@@ -9,6 +9,7 @@
 namespace http = boost::beast::http;
 using tcp = boost::asio::ip::tcp;
 namespace net = boost::asio;
+namespace beast = boost::beast;
 
 typedef enum {
     GET = 1,
@@ -18,7 +19,7 @@ typedef enum {
 typedef enum {
     MEME_POST = 1,
     SIGN_IN = 2,
-    AUTHORIZATION = 3
+    REGISTRATION = 3
 } target_request_t;
 
 typedef struct {
@@ -32,7 +33,7 @@ class Request {
 public:
     Request() = default;
 
-    void do_request(request_info &request, std::map<std::string, std::string> &body);
+    void do_request(request_info &request, std::string &body);
 
     void do_request(request_info &request);
 

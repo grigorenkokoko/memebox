@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QPixmap>
+#include <QJsonObject>
+#include <QJsonDocument>
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -64,14 +66,22 @@ void MainWindow::on_pushButton_authorization_clicked()
     QString login = ui->login->text();
     QString password = ui->pass->text();
 
+    QJsonObject obj;
+    obj["login"] = login;
+    obj["password"] = password;
+
+    QJsonDocument doc(obj);
+    QString strJson(doc.toJson(QJsonDocument::Compact));
+
+
     Request request;
     request_info request_struct = { };
-    request_struct.type_request = GET;
-    request_struct.target_request = MEME_POST;
-    /*std::map<std::string, std::string> body;
-    body["login"] = login.toStdString();
-    body["password"] = password.toStdString();*/
-    request.do_request(request_struct);
+    request_struct.type_request = POST;
+    request_struct.target_request = SIGN_IN;
+    std::string json_string = strJson.toStdString();
+
+    std::cerr << json_string << std::endl;
+    request.do_request(request_struct, json_string);
     http::request<http::string_body> to_client = request.get_request();
 
     std::cerr << "Запрос: \n" << to_client;

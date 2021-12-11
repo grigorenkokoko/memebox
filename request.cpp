@@ -1,4 +1,5 @@
 #include "client_memebox.h"
+#include <iostream>
 
 void Request::do_request(request_info &request) {
     request_.version(11);
@@ -14,7 +15,7 @@ void Request::do_request(request_info &request) {
     request_.prepare_payload();
 }
 
-void Request::do_request(request_info &request, std::map<std::string, std::string> &body) {
+void Request::do_request(request_info &request, std::string &body) {
     request_.version(11);
     request_.set(http::field::host, "127.0.0.1");
     request_.set(http::field::user_agent, BOOST_BEAST_VERSION_STRING);
@@ -23,10 +24,11 @@ void Request::do_request(request_info &request, std::map<std::string, std::strin
         request_.method(http::verb::post);
         if (request.target_request == SIGN_IN) {
             request_.target("/sign_in");
-
-        } else if (request.target_request == AUTHORIZATION) {
-            request_.target("/authorization");
+        } else if (request.target_request == REGISTRATION) {
+            request_.target("/registration");
         }
+        request_.body() = body;
+        std::cerr << "body: " << request_.body().data() << std::endl;
         //TODO: сформировать тело запроса в json и в string
     }
     request_.prepare_payload();
