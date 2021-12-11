@@ -1,0 +1,28 @@
+CREATE TABLE user_registration
+(
+    id SERIAL PRIMARY KEY,
+    e_mail CHARACTER VARYING(30),
+    Password CHARACTER VARYING(30),
+    Age INTEGER
+);
+
+CREATE TABLE mem
+(
+    id SERIAL PRIMARY KEY,
+    mem TEXT,
+    mem_type CHARACTER VARYING(30),
+    likes INTEGER
+);
+
+CREATE TABLE category
+(
+    id SERIAL PRIMARY KEY,
+    category CHARACTER VARYING(30) 
+);
+
+CREATE TABLE mem_category
+(
+    mem_id INTEGER REFERENCES mem(id),
+    category_id INTEGER REFERENCES category (id),
+    CONSTRAINT mem_category_pk PRIMARY KEY (mem_id, category_id)
+);
