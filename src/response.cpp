@@ -41,6 +41,7 @@ void Response::create_response_get() {
 
 void Response::create_response_post() {
     response_.set(http::field::content_type, "application/json");
+
     if (request_.target() == "/sign_in") {
         beast::ostream(response_.body())
                 << "There will be a sign_in info here\n";

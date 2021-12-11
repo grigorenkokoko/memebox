@@ -15,7 +15,7 @@ using tcp = boost::asio::ip::tcp;
 namespace net = boost::asio;
 
 class Response {
-    http::request<http::dynamic_body> request_;
+    http::request<http::string_body> request_;
 
     http::response<http::dynamic_body> response_;
 
