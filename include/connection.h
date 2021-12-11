@@ -6,6 +6,7 @@
 #include <boost/beast/version.hpp>
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
+#include <pqxx/pqxx>
 
 
 namespace beast = boost::beast;
@@ -18,12 +19,14 @@ class Response {
 
     http::response<http::dynamic_body> response_;
 
+    pqxx::work &worker_;
+
     void create_response_get();
 
     void create_response_post();
 
 public:
-    Response(http::request<http::dynamic_body> &request) : request_(request) {};
+    Response(http::request<http::dynamic_body> &request, pqxx::work &worker) : request_(request), worker_(worker) {};
 
     void do_response();
 
@@ -40,6 +43,8 @@ class Connection : public std::enable_shared_from_this<Connection> {
 
     http::response<http::dynamic_body> response_;
 
+    pqxx::work &worker_;
+
     void read_request();
 
     void handle_read();
@@ -48,7 +53,7 @@ class Connection : public std::enable_shared_from_this<Connection> {
 
     void handle_write(beast::error_code &ec);
 public:
-    Connection(net::io_context &ioc) : socket_{ioc} {}
+    Connection(net::io_context &ioc, pqxx::work &worker) : socket_{ioc}, worker_(worker) {}
 
     void start_connection();
 

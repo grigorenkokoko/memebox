@@ -1,6 +1,7 @@
 #include <iostream>
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include <pqxx/pqxx>
 
 #include "server_memebox.h"
 #include "connection.h"
@@ -13,7 +14,7 @@ void Server::run_server() {
 }
 
 void Server::start_accept() {
-    std::shared_ptr<Connection> connection(new Connection(ioc_));
+    std::shared_ptr<Connection> connection(new Connection(ioc_, worker_));
 
     acceptor_.async_accept(connection->get_socket(),
                            boost::bind(&Server::handle_accept, this, connection, boost::asio::placeholders::error));
@@ -28,7 +29,10 @@ void Server::handle_accept(std::shared_ptr<Connection> connection, beast::error_
 }
 
 int main() {
-    Server meme_server;
+    std::string connection_string(" host=localhost port=5432 dbname=memebox user=postgres password=new_password");
+
+    pqxx::connection connection_object(connection_string.c_str());
+    Server meme_server(connection_object);
 
     meme_server.run_server();
 

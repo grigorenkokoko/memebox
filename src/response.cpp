@@ -7,6 +7,9 @@ void Response::do_response() {
         case http::verb::get: {
             response_.result(http::status::ok);
             response_.set(http::field::server, "memebox");
+
+            pqxx::result response = worker_.exec("UPDATE public.image_mem SET mem_likes = 1 WHERE mem = '/home/dmitry/prep_project/src/1614550079_23-p-memi-na-belom-fone-24.png';");
+
             create_response_get();
             break;
         }
