@@ -7,17 +7,28 @@
 #include <boost/asio/connect.hpp>
 #include <boost/asio/ip/tcp.hpp>
 #include <pqxx/pqxx>
+#include <nlohmann/json.hpp>
 
 
 namespace beast = boost::beast;
 namespace http = boost::beast::http;
 using tcp = boost::asio::ip::tcp;
 namespace net = boost::asio;
+using json = nlohmann::json;
 
 class Response {
+    struct User {
+        std::string e_mail;
+        std::string password;
+    };
+
+    int check_user_registration(json &user_data);
+
+    int register_user(json &user_data);
+
     http::request<http::string_body> request_;
 
-    http::response<http::dynamic_body> response_;
+    http::response<http::string_body> response_;
 
     pqxx::work &worker_;
 
@@ -26,11 +37,14 @@ class Response {
     void create_response_post();
 
 public:
-    Response(http::request<http::dynamic_body> &request, pqxx::work &worker) : request_(request), worker_(worker) {};
+    Response(http::request<http::string_body> &request, pqxx::work &worker) : request_(request), worker_(worker) {};
 
     void do_response();
 
-    http::response<http::dynamic_body> get_response() { return response_; }
+    http::response<http::string_body> get_response() {
+        response_.prepare_payload();
+        return response_;
+    }
 };
 
 
@@ -39,9 +53,9 @@ class Connection : public std::enable_shared_from_this<Connection> {
 
     beast::flat_buffer buffer_{8192};
 
-    http::request<http::dynamic_body> request_;
+    http::request<http::string_body> request_;
 
-    http::response<http::dynamic_body> response_;
+    http::response<http::string_body> response_;
 
     pqxx::work &worker_;
 
