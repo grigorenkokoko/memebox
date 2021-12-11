@@ -1,9 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "client_memebox.h"
 
 #include <QMessageBox>
 #include <QDebug>
 #include <QPixmap>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -61,6 +63,25 @@ void MainWindow::on_pushButton_authorization_clicked()
 {
     QString login = ui->login->text();
     QString password = ui->pass->text();
+
+    Request request;
+    request_info request_struct = { };
+    request_struct.type_request = GET;
+    request_struct.target_request = MEME_POST;
+    /*std::map<std::string, std::string> body;
+    body["login"] = login.toStdString();
+    body["password"] = password.toStdString();*/
+    request.do_request(request_struct);
+    http::request<http::string_body> to_client = request.get_request();
+
+    std::cerr << "Запрос: \n" << to_client;
+
+    net::io_context ioc;
+    std::shared_ptr<Client> client(new Client(ioc, to_client));
+
+    client->run();
+
+    ioc.run();
 
     if (login == "Dre" && password == "123") {  // Проверка логина и пароля
 //        QMessageBox::information(this, "Авторизация", "Успешно\nПривет!");  // информационное окно
