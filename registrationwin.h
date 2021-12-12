@@ -2,6 +2,7 @@
 #define REGISTRATIONWIN_H
 
 #include <QDialog>
+#include <QStatusBar>
 
 namespace Ui {
 class registrationWin;

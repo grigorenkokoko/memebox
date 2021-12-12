@@ -4,6 +4,9 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QPixmap>
+#include <QJsonObject>
+#include <QJsonDocument>
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -61,6 +64,16 @@ void MainWindow::on_pushButton_authorization_clicked()
 {
     QString login = ui->login->text();
     QString password = ui->pass->text();
+
+    QJsonObject obj;
+    obj["login"] = login;
+    obj["password"] = password;
+
+    QJsonDocument doc(obj);
+    QString strJson(doc.toJson(QJsonDocument::Compact));
+    std::string str = strJson.toStdString();
+    qDebug() << str.data();
+
 
     if (login == "Dre" && password == "123") {  // Проверка логина и пароля
 //        QMessageBox::information(this, "Авторизация", "Успешно\nПривет!");  // информационное окно

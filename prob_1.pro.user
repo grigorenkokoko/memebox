@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 5.0.3, 2021-11-29T17:33:53. -->
+<!-- Written by QtCreator 5.0.3, 2021-12-11T18:43:04. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -138,7 +138,7 @@
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
     <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">D:/uchoba/Qt project/prob 1/prob_1</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/uchoba/Qt project/prob 1/build-prob_1-Desktop_Qt_6_2_1_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">D:/uchoba/Qt project/prob 1/prob_1</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
@@ -237,8 +237,9 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:D:/uchoba/Qt project/prob 1/prob_1/prob_1.pro</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">D:/uchoba/Qt project/prob 1/prob_1/prob_1.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">prob_12</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Program Files/Git/Dr.Dre/Qt_project/memebox/prob_1.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Program Files/Git/Dr.Dre/Qt_project/memebox/prob_1.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
     <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
