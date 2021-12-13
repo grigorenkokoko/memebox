@@ -21,6 +21,7 @@ private slots:
 
 private:
     Ui::registrationWin *ui;
+    // SecondWindow *window;
 
 signals:
     void signalReg();

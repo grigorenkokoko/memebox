@@ -13,8 +13,8 @@ registrationWin::registrationWin(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QStatusBar *bar = new QStatusBar(this);
-    ui->verticalLayout->addWidget(bar);
+    //QStatusBar *bar = new QStatusBar(this);
+    //ui->verticalLayout->addWidget(bar);
 }
 
 registrationWin::~registrationWin()
@@ -51,9 +51,11 @@ void registrationWin::on_pushButton_clicked()
             emit signalReg();  // сигнал окну Main
             this->close();
         } else {
-            qDebug() << "Введены разные пароли";
+            // qDebug() << "Введены разные пароли";
+            ui->label_message->setText("Введены разные пароли");
         }
     } else {
-        qDebug() << "Не все поля заполнены";
+        // qDebug() << "Не все поля заполнены";
+        ui->label_message->setText("Не все поля заполнены");
     }
 }
