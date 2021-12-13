@@ -22,8 +22,13 @@ private slots:
 
     void on_pushButton_back_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::SecondWindow *ui;
+
+signals:
+    void signalExit();
 };
 
 #endif // SECONDWINDOW_H

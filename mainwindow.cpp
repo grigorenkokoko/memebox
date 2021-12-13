@@ -81,6 +81,7 @@ void MainWindow::on_pushButton_authorization_clicked()
         hide();  // скрыть исходное окно
         window = new SecondWindow(this);
         window->show();
+        connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
         if (ui->checkBox->isChecked()) {  // галочка для запоминания логина и пароля
             ui->statusbar->showMessage("Пока нет возможности запомнить. ");
         }
@@ -115,6 +116,13 @@ void MainWindow::on_action_exit_triggered()
 }
 
 void MainWindow::slotReg()  // выполняется при сигнале от окна regWin
+{
+    window = new SecondWindow(this);
+    window->show();
+    connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+}
+
+void MainWindow::slotExit()
 {
     show();
 }

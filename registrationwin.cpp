@@ -49,7 +49,8 @@ void registrationWin::on_pushButton_clicked()
             qDebug() << str.data();
 
             emit signalReg();  // сигнал окну Main
-            this->close();
+            hide();
+            //this->close();
         } else {
             // qDebug() << "Введены разные пароли";
             ui->label_message->setText("Введены разные пароли");

@@ -27,6 +27,7 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_back;
     QPushButton *pushButton_next;
+    QPushButton *pushButton;
 
     void setupUi(QDialog *SecondWindow)
     {
@@ -60,6 +61,11 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        pushButton = new QPushButton(SecondWindow);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+
+        verticalLayout->addWidget(pushButton);
+
 
         retranslateUi(SecondWindow);
 
@@ -72,6 +78,7 @@ public:
         label->setText(QString());
         pushButton_back->setText(QCoreApplication::translate("SecondWindow", "\320\235\320\260\320\267\320\260\320\264", nullptr));
         pushButton_next->setText(QCoreApplication::translate("SecondWindow", "\320\222\320\277\320\265\321\200\320\265\320\264", nullptr));
+        pushButton->setText(QCoreApplication::translate("SecondWindow", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi
 
 };

@@ -69,3 +69,10 @@ void SecondWindow::on_pushButton_back_clicked()
     }
 }
 
+
+void SecondWindow::on_pushButton_clicked()
+{
+    emit signalExit();
+    this->close();
+}
+

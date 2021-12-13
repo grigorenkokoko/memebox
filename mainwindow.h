@@ -38,5 +38,6 @@ private:
 
 public slots:
     void slotReg();
+    void slotExit();
 };
 #endif // MAINWINDOW_H
