@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "client_memebox.h"
+#include "nlohmann/json.hpp"
 
 #include <QMessageBox>
 #include <QDebug>
@@ -93,12 +94,13 @@ void MainWindow::on_pushButton_authorization_clicked()
 
     ioc.run();
 
-    if (login == "Dre" && password == "123") {  // Проверка логина и пароля
+    if (client->check_status() == SUCCESS) {  // Проверка логина и пароля
 //        QMessageBox::information(this, "Авторизация", "Успешно\nПривет!");  // информационное окно
         ui->statusbar->showMessage("Успешно. ");
         hide();  // скрыть исходное окно
         window = new SecondWindow(this);
         window->show();
+        connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
         if (ui->checkBox->isChecked()) {  // галочка для запоминания логина и пароля
             ui->statusbar->showMessage("Пока нет возможности запомнить. ");
         }
@@ -133,6 +135,13 @@ void MainWindow::on_action_exit_triggered()
 }
 
 void MainWindow::slotReg()  // выполняется при сигнале от окна regWin
+{
+    window = new SecondWindow(this);
+    window->show();
+    connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+}
+
+void MainWindow::slotExit()
 {
     show();
 }

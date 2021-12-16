@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "client_memebox.h"
+#include "nlohmann/json.hpp"
 
 std::string host = "127.0.0.1";
 std::string port = "8080";
@@ -45,6 +46,21 @@ void Client::on_read(boost::system::error_code ec, std::size_t bytes_transferred
 
     socket_.shutdown(tcp::socket::shutdown_both, ec);
     socket_.close();
+}
+
+
+int Client::check_status() {
+    auto json_body = nlohmann::json::parse(response_.body().data());
+    std::string status = json_body["status"];
+    if (status == "success") {
+        return SUCCESS;
+    } else if (status == "fail") {
+        return FAIL;
+    } else if (status == "alredy_exist") {
+        return ALREDY_EXIST;
+    }
+
+    return ERROR;
 }
 
 /*int main() {

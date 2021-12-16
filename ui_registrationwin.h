@@ -38,6 +38,7 @@ public:
     QLineEdit *lineEdit_pass;
     QLineEdit *lineEdit_pass2;
     QPushButton *pushButton;
+    QLabel *label_message;
 
     void setupUi(QDialog *registrationWin)
     {
@@ -108,6 +109,11 @@ public:
 
         verticalLayout->addWidget(groupBox);
 
+        label_message = new QLabel(registrationWin);
+        label_message->setObjectName(QString::fromUtf8("label_message"));
+
+        verticalLayout->addWidget(label_message);
+
 
         retranslateUi(registrationWin);
 
@@ -124,6 +130,7 @@ public:
         label_4->setText(QCoreApplication::translate("registrationWin", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
         label_5->setText(QCoreApplication::translate("registrationWin", "\320\237\320\260\321\200\320\276\320\273\321\214 \320\265\321\211\321\221 \321\200\320\260\320\267", nullptr));
         pushButton->setText(QCoreApplication::translate("registrationWin", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\321\214", nullptr));
+        label_message->setText(QString());
     } // retranslateUi
 
 };

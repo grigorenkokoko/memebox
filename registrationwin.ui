@@ -80,6 +80,13 @@
      </layout>
     </widget>
    </item>
+   <item>
+    <widget class="QLabel" name="label_message">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources/>

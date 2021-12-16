@@ -2,7 +2,6 @@
 
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
-#include "client_memebox.h"
 
 SecondWindow::SecondWindow(QWidget *parent) :
     QDialog(parent),
@@ -28,22 +27,6 @@ void SecondWindow::on_pushButton_next_clicked()
     if (this->n < 2) {
         this->n ++;
     }
-    Request request;
-    request_info request_struct = { };
-    request_struct.type_request = GET;
-    request_struct.target_request = MEME_POST;
-    /*std::map<std::string, std::string> body;
-    body["login"] = login.toStdString();
-    body["password"] = password.toStdString();*/
-    request.do_request(request_struct);
-    http::request<http::string_body> to_client = request.get_request();
-
-    net::io_context ioc;
-    std::shared_ptr<Client> client(new Client(ioc, to_client));
-
-    client->run();
-
-    ioc.run();
     QPixmap pix1(":/resource/mem/mem0.jpg");  // создаем обьект с картинкой
     QPixmap pix2(":/resource/mem/mem1.jpg");
     QPixmap pix3(":/resource/mem/mem2.jpg");
@@ -84,5 +67,12 @@ void SecondWindow::on_pushButton_back_clicked()
         ui->label->setPixmap(pix3.scaled(w, h, Qt::KeepAspectRatio));
         break;
     }
+}
+
+
+void SecondWindow::on_pushButton_clicked()
+{
+    emit signalExit();
+    this->close();
 }
 

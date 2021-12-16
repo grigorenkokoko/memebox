@@ -2,6 +2,9 @@
 #define REGISTRATIONWIN_H
 
 #include <QDialog>
+#include <QStatusBar>
+
+#include "secondwindow.h"
 
 namespace Ui {
 class registrationWin;
@@ -20,6 +23,7 @@ private slots:
 
 private:
     Ui::registrationWin *ui;
+    SecondWindow *window;
 
 signals:
     void signalReg();

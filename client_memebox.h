@@ -27,6 +27,13 @@ typedef struct {
     target_request_t target_request;
 } request_info;
 
+typedef enum {
+    SUCCESS = 1,
+    FAIL = 2,
+    ALREDY_EXIST = 3,
+    ERROR = 4
+} response_status_t;
+
 
 class Request {
     http::request<http::string_body> request_;
@@ -57,9 +64,12 @@ class Client : public std::enable_shared_from_this<Client> {
 
     void on_read(boost::system::error_code ec, std::size_t bytes_transferred);
 
+
 public:
     Client(net::io_context &ioc, http::request<http::string_body> &request) :
             request_(std::move(request)), resolver_(ioc), socket_(ioc) {}
 
     void run();
+
+    int check_status();
 };

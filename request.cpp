@@ -33,3 +33,4 @@ void Request::do_request(request_info &request, std::string &body) {
     }
     request_.prepare_payload();
 }
+
