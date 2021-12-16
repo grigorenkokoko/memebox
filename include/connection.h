@@ -16,28 +16,40 @@ using tcp = boost::asio::ip::tcp;
 namespace net = boost::asio;
 using json = nlohmann::json;
 
-class Response {
-    struct User {
-        std::string e_mail;
-        std::string password;
-    };
 
-    int check_user_registration(json &user_data);
+class User {
+    std::string e_mail;
+    std::string password;
+    std::string name;
+    std::string surname;
+    std::string id;
+    pqxx::work &worker_;
+public:
+    User(pqxx::work &worker) : worker_(worker) {};
+
+    int check_user_login(json &user_data);
 
     int register_user(json &user_data);
+
+    int check_user_password(json &user_data);
+};
+
+class Response {
 
     http::request<http::string_body> request_;
 
     http::response<http::string_body> response_;
 
-    pqxx::work &worker_;
+    //pqxx::work &worker_;
+
+    User user_;
 
     void create_response_get();
 
     void create_response_post();
 
 public:
-    Response(http::request<http::string_body> &request, pqxx::work &worker) : request_(request), worker_(worker) {};
+    Response(http::request<http::string_body> &request, pqxx::work &worker) : request_(request), user_(worker) {};
 
     void do_response();
 

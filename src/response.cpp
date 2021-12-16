@@ -12,8 +12,6 @@ void Response::do_response() {
             response_.result(http::status::ok);
             response_.set(http::field::server, "memebox");
 
-            pqxx::result response = worker_.exec("UPDATE public.image_mem SET mem_likes = 1 WHERE mem = '/home/dmitry/prep_project/src/1614550079_23-p-memi-na-belom-fone-24.png';");
-
             create_response_get();
             break;
         }
@@ -47,83 +45,67 @@ void Response::create_response_post() {
         auto json_body = json::parse(request_.body().data());
         std::cerr << json_body << std::endl;
         json json_response;
-        if (check_user_registration(json_body)) {
-            json_response = {{"status", "already exist"}};
+        if (user_.check_user_login(json_body) == 1) {
+            json_response = {{"status", "success"}};
         } else {
-            if (!register_user(json_body)) {
-                json_response = {{"status", "success"}};
-            } else {
-                json_response = {{"status", "fail"}};
-            }
+            json_response = {{"status", "fail"}};
         }
         response_.body() = json_response.dump();
     } else if (request_.target() == "/registration") {
         auto json_body = json::parse(request_.body().data());
         json json_response;
-        if (check_user_registration(json_body)) {
-            json_response = {{"status", "already exist"}};
-        } else {
-            if (!register_user(json_body)) {
+        if (!user_.check_user_login(json_body)) {
+            if (!user_.register_user(json_body)) {
                 json_response = {{"status", "success"}};
             } else {
                 json_response = {{"status", "fail"}};
             }
+        } else {
+            json_response = {{"status", "already exist"}};
         }
         response_.body() = json_response.dump();
     }
 }
 
-int Response::check_user_registration(json &user_data) {
-    //we get j-son
 
-    // в сигнатуре функции должен быть j-son от клиента, который мы распарсим прямо внутри фнукции
-    /*User user{"edp6000@mail.ru", "password"};
-    nlohmann::json j{};
-    j["login"] = user.e_mail;
-    j["password"] = user.password;*/
-
-    //std::cout << j << std::endl;
-
-    /*std::string serializedString = j.dump();
-    //we need deserialize it*/
-    User user_client{};
-    //nlohmann::json j1 = nlohmann::json::parse(serializedString);//
-
+// парсим логин и пароль из джоса из тела запроса и посылаем запрос базе данных на проверку этого пользователя в ней
+int User::check_user_login(json &user_data) {
     std::cerr << "in check : " << user_data << std::endl;
 
-    user_client.e_mail = user_data["login"];
-    user_client.password = user_data["password"];
+    e_mail = user_data["login"];
+    password = user_data["password"];
 
-    pqxx::result response_= worker_.exec("SELECT * FROM user_registration WHERE e_mail='"+ user_client.e_mail+" ' AND password = '"+user_client.password+"';");
-    //worker_.commit();
+    pqxx::result response_= worker_.exec("SELECT e_mail, password FROM user_registration WHERE e_mail='" + e_mail + "';");
+
+    /*pqxx::result id_ = worker_.exec("SELECT id FROM user_registration WHERE e_mail='" + e_mail + "';");
+
+    id = id_[0][0].c_str();*/
 
     std::cerr << "check registr" << std::endl;
+
+    std::cerr << "response size: " << response_.size() << std::endl;
 
     if (response_.size() < 1) {
         return 0;
     }
 
+    if (password != response_[0][1].c_str()) {
+        return -1;
+    }
+
     return 1;
 }
 
-int Response::register_user(json &user_data) {
-    /*User user{"edp6000@mail.ru", "password"};
-    nlohmann::json j{};
-    j["login"] = user.e_mail;
-    j["password"] = user.password;*/
+// если пользователя нет в базе данных, добавляем
+int User::register_user(json &user_data) {
+    name = user_data["name"];
+    surname = user_data["surname"];
 
-    //std::cout << j << std::endl;
+    pqxx::result response_ = worker_.exec("INSERT INTO user_registration(e_mail, password, name, surname) "
+                                          "VALUES ('" + e_mail + "', '" + password + "', '" + name + "', '" + surname + "');");
 
-    //std::string serializedString = j.dump();
-    //we need deserialize it
-    User user_client{};
-    //nlohmann::json j1 = nlohmann::json::parse(serializedString);
+    worker_.exec("commit;");
 
-    user_client.e_mail = user_data["login"];
-    user_client.password = user_data["password"];
-
-    pqxx::result response_ = worker_.exec("INSERT INTO user_registration(e_mail, password) VALUES ('"+ user_client.e_mail+"', '"+user_client.password+ "');");
-    worker_.commit();
     std::cerr << "add to db" << std::endl;
 
     if (response_.size() >= 1) {
@@ -132,5 +114,23 @@ int Response::register_user(json &user_data) {
     }
     //надо дописать что конкретно будет выведено клиенту в случае успеха
     return 0;
+}
+
+int User::check_user_password(json &user_data) {
+    std::cerr << "in check : " << user_data << std::endl;
+
+    password = user_data["password"];
+
+    pqxx::result response_= worker_.exec("SELECT password FROM user_registration WHERE password='" + password + /*"' AND id='" + id +*/"';");
+
+    std::cerr << "check password" << std::endl;
+
+    std::cerr << "response size: " << response_.size() << std::endl;
+
+    if (response_.size() < 1) {
+        return 0;
+    }
+
+    return 1;
 }
 
