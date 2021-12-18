@@ -16,6 +16,8 @@ INSERT INTO mem (mem, mem_type, likes) VALUES
 Ваш звонок очень важен для нас - оставайтесь на линии.
 Хотите попробовать потушить пожар самостоятельно? Воспользуйтесь услугой "Продвинутый пожарный"! Чтобы узнать, как подключить - нажмите "5"',
 'text', 0);
+
+
 INSERT INTO mem (mem, mem_type, likes) VALUES
 (
 'Вы не выбрали подходящий вариант.
@@ -26,19 +28,80 @@ INSERT INTO mem (mem, mem_type, likes) VALUES
 - Б...!!! С....! .... ....! Пожар!!!
 - Наши специалисты рассмотрят вашу проблему. Скажите, по какому номеру мы можем с вами связаться?',
 'text', 0);
+
+
 INSERT INTO mem (mem, mem_type, likes) VALUES
 (
 'Находят митингующих по записям с видеокамер через нейросеть, хотя они в масках, их штрафуют, сажают… А вот человека, который выставил мою хату, спер дорогущий ноут, деньги, и лицо которого запечатлено на всех камерах подъезда, как-то блин, за два года найти не могут.',
 'text', 0);
+
+
 INSERT INTO mem (mem, mem_type, likes) VALUES
 (
 '- Путин точно привился?
 - Он хоть раз обманывал?',
 'text', 0);
+
+
 INSERT INTO mem (mem, mem_type, likes) VALUES
 (
 'Человек пришёл в храм. Он забыл выключить телефон, который во время молитвы зазвонил. Священник отчитал его. Люди, которые молились, ругали его после молитвы за то, что он нарушил тишину. Всю дорогу домой его жена выговаривала ему за его невнимательность. На его лице можно было увидеть стыд, растерянность и унижение.
 После этого случая этого человека никогда больше не видели в храме. И в этот же вечер он пошёл в бар. Этот человек всё ещё нервничал и его руки дрожали. Случайно он разлил свой напиток на стол. Официант извинился и дал ему салфетку, чтобы вытереться. Уборщик вытер пол. Управляющая бара предложила ему другой напиток за счёт заведения. При этом она сказала: "Не беспокойтесь, мужчина. Все делают ошибки".
 С этого дня он ходил в бар каждый вечер.',
 'text', 0);
+
+
+
+INSERT INTO category (category) VALUES ('политика');
+INSERT INTO category (category) VALUES ('сериалы');
+INSERT INTO category (category) VALUES ('фильмы');
+INSERT INTO category (category) VALUES ('музыка');
+INSERT INTO category (category) VALUES ('тик-ток');
+INSERT INTO category (category) VALUES ('собаки');
+INSERT INTO category (category) VALUES ('коты');
+INSERT INTO category (category) VALUES ('жирафы');
+INSERT INTO category (category) VALUES ('медведи');
+INSERT INTO category (category) VALUES ('животные');
+INSERT INTO category (category) VALUES ('зайцы');
+INSERT INTO category (category) VALUES ('наука');
+INSERT INTO category (category) VALUES ('математика');
+INSERT INTO category (category) VALUES ('физика');
+INSERT INTO category (category) VALUES ('химия');
+INSERT INTO category (category) VALUES ('игры');
+INSERT INTO category (category) VALUES ('мальчики');
+INSERT INTO category (category) VALUES ('девочки');
+INSERT INTO category (category) VALUES ('коллажи');
+INSERT INTO category (category) VALUES ('актеры');
+INSERT INTO category (category) VALUES ('комики');
+INSERT INTO category (category) VALUES ('худшее');
+INSERT INTO category (category) VALUES ('лучшее');
+INSERT INTO category (category) VALUES ('отношения');
+INSERT INTO category (category) VALUES ('кино');
+INSERT INTO category (category) VALUES ('телевидение');
+INSERT INTO category (category) VALUES ('лишний вес');
+INSERT INTO category (category) VALUES ('каламбуры');
+INSERT INTO category (category) VALUES ('популярное');
+INSERT INTO category (category) VALUES ('непристойное');
+INSERT INTO category (category) VALUES ('18+');
+INSERT INTO category (category) VALUES ('любовь');
+INSERT INTO category (category) VALUES ('деревни');
+INSERT INTO category (category) VALUES ('города');
+INSERT INTO category (category) VALUES ('ирония');
+INSERT INTO category (category) VALUES ('машины');
+INSERT INTO category (category) VALUES ('мотоциклы');
+INSERT INTO category (category) VALUES ('велосипеды');
+INSERT INTO category (category) VALUES ('анекдоты');
+INSERT INTO category (category) VALUES ('черный юмор');
+INSERT INTO category (category) VALUES ('аристократы');
+INSERT INTO category (category) VALUES ('рисованное');
+INSERT INTO category (category) VALUES ('тролфэйс');
+INSERT INTO category (category) VALUES ('диаграммы');
+INSERT INTO category (category) VALUES ('спорт');
+INSERT INTO category (category) VALUES ('бокс');
+INSERT INTO category (category) VALUES ('футбол');
+INSERT INTO category (category) VALUES ('хоккей');
+INSERT INTO category (category) VALUES ('теннис');
+INSERT INTO category (category) VALUES ('мультики');
+INSERT INTO category (category) VALUES ('черный властелин');
+INSERT INTO category (category) VALUES ('работа');
 
