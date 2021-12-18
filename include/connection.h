@@ -16,6 +16,24 @@ using tcp = boost::asio::ip::tcp;
 namespace net = boost::asio;
 using json = nlohmann::json;
 
+class Meme {
+    std::string id;
+    std::string target;
+    std::string meme_byte;
+    pqxx::work &worker_;
+
+public:
+    Meme(pqxx::work &worker) : worker_(worker) {};
+
+    int create_str_byte();
+
+    int create_file_by_byte();
+
+    std::string& get_meme_byte() {return meme_byte;}
+
+    std::string& get_filename_by_db();
+};
+
 
 class User {
     std::string e_mail;
@@ -30,8 +48,6 @@ public:
     int check_user_login(json &user_data);
 
     int register_user(json &user_data);
-
-    int check_user_password(json &user_data);
 };
 
 class Response {
@@ -44,12 +60,14 @@ class Response {
 
     User user_;
 
+    Meme meme_;
+
     void create_response_get();
 
     void create_response_post();
 
 public:
-    Response(http::request<http::string_body> &request, pqxx::work &worker) : request_(request), user_(worker) {};
+    Response(http::request<http::string_body> &request, pqxx::work &worker) : request_(request), user_(worker), meme_(worker) {};
 
     void do_response();
 

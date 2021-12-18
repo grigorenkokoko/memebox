@@ -16,6 +16,6 @@ find_library(PQ_LIB pq)
 
 include_directories(include)
 
-add_executable(server_memebox src/server_memebox.cpp src/connection.cpp src/response.cpp)
+add_executable(server_memebox src/server_memebox.cpp src/connection.cpp src/response.cpp src/base64.cpp)
 
 target_link_libraries(server_memebox boost_thread pthread ${BOOST_LIBRARIES} ${PQXX_LIB} ${PQ_LIB})

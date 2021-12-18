@@ -29,7 +29,7 @@ void Server::handle_accept(std::shared_ptr<Connection> connection, beast::error_
 }
 
 int main() {
-    std::string connection_string(" host=localhost port=5432 dbname=memebox user=postgres password=new_password");
+    std::string connection_string(" host=localhost port=5432 dbname=memebox user=katya password=password");
 
     pqxx::connection connection_object(connection_string.c_str());
     Server meme_server(connection_object);

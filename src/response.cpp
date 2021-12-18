@@ -1,8 +1,9 @@
 #include <nlohmann/json.hpp>
 #include <iostream>
+#include <fstream>
 
 #include "connection.h"
-
+#include "base64.h"
 
 void Response::do_response() {
     response_.version(request_.version());
@@ -46,7 +47,9 @@ void Response::create_response_post() {
         std::cerr << json_body << std::endl;
         json json_response;
         if (user_.check_user_login(json_body) == 1) {
-            json_response = {{"status", "success"}};
+            meme_.get_filename_by_db();
+            meme_.create_str_byte();
+            json_response = {{"status", "success"}, {"meme", meme_.get_meme_byte()}};
         } else {
             json_response = {{"status", "fail"}};
         }
@@ -57,6 +60,7 @@ void Response::create_response_post() {
         if (!user_.check_user_login(json_body)) {
             if (!user_.register_user(json_body)) {
                 json_response = {{"status", "success"}};
+                meme_.get_filename_by_db();
             } else {
                 json_response = {{"status", "fail"}};
             }
@@ -75,7 +79,7 @@ int User::check_user_login(json &user_data) {
     e_mail = user_data["login"];
     password = user_data["password"];
 
-    pqxx::result response_= worker_.exec("SELECT e_mail, password FROM user_registration WHERE e_mail='" + e_mail + "';");
+    pqxx::result response_= worker_.exec("SELECT login, password FROM user_registration WHERE login='" + e_mail + "';");
 
     /*pqxx::result id_ = worker_.exec("SELECT id FROM user_registration WHERE e_mail='" + e_mail + "';");
 
@@ -101,7 +105,7 @@ int User::register_user(json &user_data) {
     name = user_data["name"];
     surname = user_data["surname"];
 
-    pqxx::result response_ = worker_.exec("INSERT INTO user_registration(e_mail, password, name, surname) "
+    pqxx::result response_ = worker_.exec("INSERT INTO user_registration(login, password, name, surname) "
                                           "VALUES ('" + e_mail + "', '" + password + "', '" + name + "', '" + surname + "');");
 
     worker_.exec("commit;");
@@ -116,21 +120,35 @@ int User::register_user(json &user_data) {
     return 0;
 }
 
-int User::check_user_password(json &user_data) {
-    std::cerr << "in check : " << user_data << std::endl;
 
-    password = user_data["password"];
+int Meme::create_str_byte() {
+    std::ifstream input( target, std::ios::binary);
 
-    pqxx::result response_= worker_.exec("SELECT password FROM user_registration WHERE password='" + password + /*"' AND id='" + id +*/"';");
+    std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(input), {});
 
-    std::cerr << "check password" << std::endl;
+    meme_byte = base64_encode(buffer, buffer.size());
 
-    std::cerr << "response size: " << response_.size() << std::endl;
+    std::cout << meme_byte;
 
-    if (response_.size() < 1) {
-        return 0;
-    }
+    return 0;
+}
 
-    return 1;
+int Meme::create_file_by_byte() {
+    std::vector<BYTE> output = base64_decode(meme_byte);
+
+    std::ofstream outfile(target, std::ios::out | std::ios::binary);
+    outfile.write(reinterpret_cast<const char*>(output.data()), output.size());
+
+    return 0;
+}
+
+std::string& Meme::get_filename_by_db() {
+
+    std::cout << "in get_file";
+    pqxx::result response_ = worker_.exec("SELECT * FROM mem ORDER BY random() LIMIT 1");
+
+    target = response_[0][1].c_str();
+
+    std::cerr << response_[0][1].c_str() << std::endl;
 }
 
