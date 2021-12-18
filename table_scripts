@@ -1,8 +1,20 @@
 CREATE TABLE user_registration
 (
     id SERIAL PRIMARY KEY,
-    e_mail CHARACTER VARYING(30),
-    Password CHARACTER VARYING(30),
+    e_mail CHARACTER VARYING(30) NOT NULL UNIQUE,
+    password CHARACTER VARYING(30),
+	name CHARACTER VARYING(30),
+	surname CHARACTER VARYING(30),
+	first_category CHARACTER VARYING(30),
+	second_category CHARACTER VARYING(30),
+	third_category CHARACTER VARYING(30),
+	fourth_category CHARACTER VARYING(30),
+	fifth_category CHARACTER VARYING(30),
+	sixth_category CHARACTER VARYING(30),
+	seventh_category CHARACTER VARYING(30),
+	eighth_category CHARACTER VARYING(30),
+	ninth_category CHARACTER VARYING(30),
+	tenth_category CHARACTER VARYING(30),
     Age INTEGER
 );
 
@@ -11,7 +23,8 @@ CREATE TABLE mem
     id SERIAL PRIMARY KEY,
     mem TEXT,
     mem_type CHARACTER VARYING(30),
-    likes INTEGER
+    likes INTEGER,
+	dislikes INTEGER
 );
 
 CREATE TABLE category
