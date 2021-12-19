@@ -21,7 +21,7 @@ CREATE TABLE user_registration
 CREATE TABLE mem
 (
     id SERIAL PRIMARY KEY,
-    mem TEXT,
+    mem TEXT UNIQUE,
     mem_type CHARACTER VARYING(30),
     likes INTEGER,
 	dislikes INTEGER
