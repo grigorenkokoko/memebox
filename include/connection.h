@@ -18,9 +18,24 @@ using json = nlohmann::json;
 
 class Meme {
     std::string id;
-    std::string target;
+
+    std::string path;
+
+    std::string type;
+
     std::string meme_byte;
+
+    std::string category_name1;
+    std::string category_name2;
+    std::string category_name3;
+
     pqxx::work &worker_;
+
+    int category_id1;
+    int category_id2;
+    int category_id3;
+
+    int category_num;
 
 public:
     Meme(pqxx::work &worker) : worker_(worker) {};
@@ -32,6 +47,15 @@ public:
     std::string& get_meme_byte() {return meme_byte;}
 
     std::string& get_filename_by_db();
+    
+    int upload_image_mem(json &mem_data);
+
+    //int upload_text_mem();
+
+    //int get_text_mem();
+
+    int get_image_mem(json &mem_data);
+
 };
 
 
@@ -41,8 +65,13 @@ class User {
     std::string name;
     std::string surname;
     std::string id;
+    std::string category;
+    std::string category_id;
     pqxx::work &worker_;
+
 public:
+    int set_category(json &user_data);
+
     User(pqxx::work &worker) : worker_(worker) {};
 
     int check_user_login(json &user_data);
