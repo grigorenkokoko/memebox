@@ -95,6 +95,7 @@ public:
 
         pass = new QLineEdit(groupBox);
         pass->setObjectName(QString::fromUtf8("pass"));
+        pass->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, pass);
 

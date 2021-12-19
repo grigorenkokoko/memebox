@@ -7,5 +7,9 @@
         <file>mem/mem1.jpg</file>
         <file>mem/mem2.jpg</file>
         <file>mem/mem0.jpg</file>
+        <file>img/dislike.png</file>
+        <file>img/dislike_click.png</file>
+        <file>img/like.png</file>
+        <file>img/like_click.png</file>
     </qresource>
 </RCC>

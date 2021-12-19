@@ -44,7 +44,7 @@ public:
     {
         if (registrationWin->objectName().isEmpty())
             registrationWin->setObjectName(QString::fromUtf8("registrationWin"));
-        registrationWin->resize(297, 249);
+        registrationWin->resize(297, 272);
         verticalLayout = new QVBoxLayout(registrationWin);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         groupBox = new QGroupBox(registrationWin);
@@ -93,11 +93,13 @@ public:
 
         lineEdit_pass = new QLineEdit(groupBox);
         lineEdit_pass->setObjectName(QString::fromUtf8("lineEdit_pass"));
+        lineEdit_pass->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_pass);
 
         lineEdit_pass2 = new QLineEdit(groupBox);
         lineEdit_pass2->setObjectName(QString::fromUtf8("lineEdit_pass2"));
+        lineEdit_pass2->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_pass2);
 

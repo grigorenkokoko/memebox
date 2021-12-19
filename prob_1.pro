@@ -9,22 +9,34 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    categorieswin.cpp \
     main.cpp \
     mainwindow.cpp \
+    qdynamicbox.cpp \
+    qdynamicbutton.cpp \
+    qdynamiccheckbox.cpp \
     registrationwin.cpp \
     scaledpixmap.cpp \
-    secondwindow.cpp
+    secondwindow.cpp \
+    userprofilewin.cpp
 
 HEADERS += \
+    categorieswin.h \
     mainwindow.h \
+    qdynamicbox.h \
+    qdynamicbutton.h \
+    qdynamiccheckbox.h \
     registrationwin.h \
     scaledpixmap.h \
-    secondwindow.h
+    secondwindow.h \
+    userprofilewin.h
 
 FORMS += \
+    categorieswin.ui \
     mainwindow.ui \
     registrationwin.ui \
-    secondwindow.ui
+    secondwindow.ui \
+    userprofilewin.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
