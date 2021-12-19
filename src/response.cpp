@@ -122,7 +122,7 @@ int User::register_user(json &user_data) {
 
 
 int Meme::create_str_byte() {
-    std::ifstream input( target, std::ios::binary);
+    std::ifstream input(path, std::ios::binary);
 
     std::vector<unsigned char> buffer(std::istreambuf_iterator<char>(input), {});
 
@@ -136,7 +136,7 @@ int Meme::create_str_byte() {
 int Meme::create_file_by_byte() {
     std::vector<BYTE> output = base64_decode(meme_byte);
 
-    std::ofstream outfile(target, std::ios::out | std::ios::binary);
+    std::ofstream outfile(path, std::ios::out | std::ios::binary);
     outfile.write(reinterpret_cast<const char*>(output.data()), output.size());
 
     return 0;
@@ -147,8 +147,125 @@ std::string& Meme::get_filename_by_db() {
     std::cout << "in get_file";
     pqxx::result response_ = worker_.exec("SELECT * FROM mem ORDER BY random() LIMIT 1");
 
-    target = response_[0][1].c_str();
+    path = response_[0][1].c_str();
 
     std::cerr << response_[0][1].c_str() << std::endl;
 }
+
+int Meme::upload_image_mem(json &mem_data) {
+    create_str_byte();
+
+    category_name1 = mem_data["category1"];
+
+    pqxx::result response_ = worker_.exec("INSERT INTO category(category) VALUES ('" + category_name1 + "');");
+
+    response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name1 + "';");
+
+    category_id1 = response_[0][0];
+    //тут нужно передать поток байт
+    response_ = worker_.exec("INSERT INTO mem(mem, mem_type, likes, dislikes) VALUES ('" + path + "', 'image', 0,0);");
+
+    response_ = worker_.exec("SELECT id FROM mem WHERE mem =' " + path + "';");
+
+    id = response_[0][0];
+
+    response_ = worker_.exec("INSERT INTO mem_category(mem_id, category_id) VALUES (" + id + ", " + category_id1 + ");");
+    
+    return 0;
+}
+    
+//int Meme::upload_text_mem() {
+
+    
+//}
+
+//int Meme::get_text_mem() {
+//    pqxx::result response_ = worker_.exec("SELECT * FROM mem ORDER BY random() LIMIT 1");
+
+//}
+
+int User::set_category(json &user_data) {
+    category = user_data["category"];
+    e_mail = user_data["e_mail"];
+
+    pqxx::result response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category + "';");
+
+    category_id = response_[0][0];
+
+    response_ = worker_.exec("SELECT id FROM user_registration WHERE email =' " + e_mail + "';");  
+
+    id = response_[0][0];
+
+    response_ = worker_.exec("INSERT INTO user_registration_category(user_registration_id, category_id) VALUES (" + id + ", " + category_id + ");");
+    
+    return 0;
+}
+
+int Meme::get_image_mem(json &mem_data) {
+
+    category_num = mem_data["number_of_category"];
+    switch (category_num) {
+    case 2 :
+        category_name1 = mem_data["category1"];
+        category_name2 = mem_data["category2"];
+
+        pqxx::result response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name1 + "';");
+        
+        category_id1 = response_[0][0];
+
+        response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name2 + "';");
+
+        category_id2 = response_[0][0];
+
+        response_ = worker_.exec("SELECT mem FROM mem_category LEFT JOIN mem ON mem_category.mem_id = mem.id  LEFT JOIN category ON mem_category.category_id = mem.id WHERE mem_category.category_id = " + category_id1 + " AND mem_category.category_id = " + category_id2 + ";");
+
+        path = response_[0][0];
+
+        Meme::create_str_byte();
+        
+        break;
+    case 3 :
+        category_name1 = mem_data["category1"];
+        category_name2 = mem_data["category2"];
+        category_name3 = mem_data["category3"];
+
+        pqxx::result response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name1 + "';");
+        
+        category_id1 = response_[0][0];
+
+        response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name2 + "';");
+
+        category_id2 = response_[0][0];
+
+        response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name3 + "';");
+
+        category_id3 = response_[0][0];
+
+        response_ = worker_.exec("SELECT mem FROM mem_category LEFT JOIN mem ON mem_category.mem_id = mem.id  LEFT JOIN category ON mem_category.category_id = mem.id WHERE mem_category.category_id = " + category_id1 + " AND mem_category.category_id = " + category_id2 + " AND mem_category.category_id = " category_id3 + ";");
+
+        path = response_[0][0];
+
+        Meme::create_str_byte();
+
+        break;
+    default:
+        category_name1 = mem_data["category1"];
+
+        pqxx::result response_ = worker_.exec("SELECT id FROM category WHERE category =' " + category_name1 + "';");
+        
+        category_id1 = response_[0][0];
+
+        response_ = worker_.exec("SELECT mem FROM mem_category LEFT JOIN mem ON mem_category.mem_id = mem.id  LEFT JOIN category ON mem_category.category_id = mem.id WHERE mem_category.category_id = " + category_id1 + ";");
+        // сейчас в респонсе лежит(ат) нужный(ые) мем(ы) в ячейка [0][0] [1][0] [2][0]  и т д.
+        path = response_[0][0];
+
+        Meme::create_str_byte();
+
+        break;
+    }
+
+    return 0;
+
+}
+
 
