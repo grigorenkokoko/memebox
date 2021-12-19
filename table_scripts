@@ -30,7 +30,7 @@ CREATE TABLE mem
 CREATE TABLE category
 (
     id SERIAL PRIMARY KEY,
-    category CHARACTER VARYING(30) 
+    category CHARACTER VARYING(30) UNIQUE
 );
 
 CREATE TABLE mem_category
