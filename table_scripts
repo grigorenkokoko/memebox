@@ -5,16 +5,6 @@ CREATE TABLE user_registration
     password CHARACTER VARYING(30),
 	name CHARACTER VARYING(30),
 	surname CHARACTER VARYING(30),
-	first_category CHARACTER VARYING(30),
-	second_category CHARACTER VARYING(30),
-	third_category CHARACTER VARYING(30),
-	fourth_category CHARACTER VARYING(30),
-	fifth_category CHARACTER VARYING(30),
-	sixth_category CHARACTER VARYING(30),
-	seventh_category CHARACTER VARYING(30),
-	eighth_category CHARACTER VARYING(30),
-	ninth_category CHARACTER VARYING(30),
-	tenth_category CHARACTER VARYING(30),
     Age INTEGER
 );
 
@@ -32,6 +22,15 @@ CREATE TABLE category
     id SERIAL PRIMARY KEY,
     category CHARACTER VARYING(30) UNIQUE
 );
+
+
+CREATE TABLE user_registration_category
+(
+    user_registration_id INTEGER REFERENCES user_registration(id),
+    category_id INTEGER REFERENCES category(id),
+    CONSTRAINT user_registration_category_pk PRIMARY KEY (user_registration_id, category_id)
+);
+
 
 CREATE TABLE mem_category
 (
