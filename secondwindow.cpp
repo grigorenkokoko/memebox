@@ -1,6 +1,7 @@
 #include <QPixmap>
 #include <QScrollArea>  // полосы прокрутки
 #include <QLabel>
+#include <QFileDialog>
 
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
@@ -208,7 +209,9 @@ void SecondWindow::slot_on_pushButton_download_clicked()
 {
     QDynamicButton *buttonDownload = (QDynamicButton*) sender();
     QDynamicBox *Box = this->findChild<QDynamicBox *>("groupBox_" + QString::number(buttonDownload->BoxNumber));
-    qDebug() << Box->getID();
+    QString fileDirectory = QFileDialog::getExistingDirectory(this);
+
+    qDebug() << fileDirectory;
 
     /*
      *  Скачивание картинки на устройство
