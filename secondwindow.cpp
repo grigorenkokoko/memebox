@@ -110,6 +110,14 @@ void SecondWindow::on_pushButton_addBox_clicked()
 
     HLayout->addStretch(0); // Добавляет растягиваемое пространство (QSpacerItem) с нулевым минимальным размером
 
+    QDynamicButton *buttonDownload = new QDynamicButton();
+    HLayout->addWidget(buttonDownload);
+    buttonDownload->setObjectName("buttonDownload_" + QString::number(Box->getID()));
+    buttonDownload->BoxNumber = Box->getID();
+    buttonDownload->setIcon(QIcon(":/resource/img/download.png"));
+    buttonDownload->setIconSize(QSize(20, 20));
+    connect(buttonDownload, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_download_clicked()));
+
     QPixmap pix1(":/resource/mem/mem0.jpg");
     int w = 275;
     int h = 257;
@@ -165,8 +173,22 @@ void SecondWindow::slot_on_pushButton_dislike_clicked()
     }
 }
 
+void SecondWindow::slot_on_pushButton_download_clicked()
+{
+    QDynamicButton *buttonDownload = (QDynamicButton*) sender();
+    QDynamicBox *Box = this->findChild<QDynamicBox *>("groupBox_" + QString::number(buttonDownload->BoxNumber));
+    qDebug() << Box->getID();
+
+    /*
+     *  Скачивание картинки на устройство
+     */
+}
+
 void SecondWindow::on_pushButton_clicked()
 {
+    //hide();
+    //emit signalUserWin();
+
     hide();  // скрыть исходное окно
     userProf = new userProfileWin(this);
     userProf->show();
@@ -177,4 +199,9 @@ void SecondWindow::slotExitProf()
 {
     show();
 }
+//
+//void SecondWindow::slotUserWin()
+//{
+//
+//}
 

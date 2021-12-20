@@ -48,7 +48,7 @@ void registrationWin::on_pushButton_clicked()
             std::string str = strJson.toStdString();
             qDebug() << str.data();
 
-            emit signalReg();  // сигнал окну Main
+            emit signalSecWin();  // сигнал окну Main
             hide();
             //this->close();
         } else {

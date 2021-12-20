@@ -53,10 +53,14 @@ void MainWindow::on_pushButton_exit_clicked()
 void MainWindow::on_pushButton_registration_clicked()
 {
     hide();  // скрыть исходное окно
+
+    if (regWin != NULL) {
+        regWin->close();
+        qDebug() << "Win close";
+    }
     regWin = new registrationWin(this);
     regWin->show();
-
-    connect(regWin, &registrationWin::signalReg, this, &MainWindow::slotReg);  //  связь между сигналом окна regWin и слотом окна Main, для того чтобы можно было вернуться в окно Main
+    connect(regWin, &registrationWin::signalSecWin, this, &MainWindow::slotSecWin);  //  связь между сигналом окна regWin и слотом окна Main, для того чтобы можно было вернуться в окно Main
 }
 
 
@@ -78,10 +82,21 @@ void MainWindow::on_pushButton_authorization_clicked()
     if (login == "Dre" && password == "123") {  // Проверка логина и пароля
 //        QMessageBox::information(this, "Авторизация", "Успешно\nПривет!");  // информационное окно
         ui->statusbar->showMessage("Успешно. ");
+
         hide();  // скрыть исходное окно
+
+        if (window != NULL) {
+            window->close();
+            qDebug() << "Win close";
+        }
         window = new SecondWindow(this);
         window->show();
         connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+
+        //window = new SecondWindow(this);
+        //window->show();
+        //connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+
         if (ui->checkBox->isChecked()) {  // галочка для запоминания логина и пароля
             ui->statusbar->showMessage("Пока нет возможности запомнить. ");
         }
@@ -115,12 +130,27 @@ void MainWindow::on_action_exit_triggered()
     }
 }
 
-void MainWindow::slotReg()  // выполняется при сигнале от окна regWin
+void MainWindow::slotSecWin()  // выполняется при сигнале от окна regWin
 {
+    if (window != NULL) {
+        window->close();
+        qDebug() << "Win close";
+    }
     window = new SecondWindow(this);
     window->show();
     connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
 }
+
+//void MainWindow::slotUserWin()
+//{
+//    if (userWin != NULL) {
+//        userWin->close();
+//        qDebug() << "Win close";
+//    }
+//    userWin = new userProfileWin(this);
+//    userWin->show();
+//    //connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+//}
 
 void MainWindow::slotExit()
 {

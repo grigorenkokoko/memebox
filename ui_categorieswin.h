@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QScrollArea>
@@ -28,9 +27,8 @@ public:
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
-    QCheckBox *checkBox;
     QPushButton *pushButton_2;
-    QPushButton *pushButton;
+    QPushButton *pushButton_exitCateg;
 
     void setupUi(QDialog *categoriesWin)
     {
@@ -49,11 +47,6 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        checkBox = new QCheckBox(scrollAreaWidgetContents);
-        checkBox->setObjectName(QString::fromUtf8("checkBox"));
-
-        verticalLayout_2->addWidget(checkBox);
-
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
@@ -66,10 +59,10 @@ public:
 
         verticalLayout->addWidget(scrollArea);
 
-        pushButton = new QPushButton(categoriesWin);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton_exitCateg = new QPushButton(categoriesWin);
+        pushButton_exitCateg->setObjectName(QString::fromUtf8("pushButton_exitCateg"));
 
-        verticalLayout->addWidget(pushButton);
+        verticalLayout->addWidget(pushButton_exitCateg);
 
 
         retranslateUi(categoriesWin);
@@ -80,9 +73,8 @@ public:
     void retranslateUi(QDialog *categoriesWin)
     {
         categoriesWin->setWindowTitle(QCoreApplication::translate("categoriesWin", "Dialog", nullptr));
-        checkBox->setText(QCoreApplication::translate("categoriesWin", "CheckBox", nullptr));
         pushButton_2->setText(QCoreApplication::translate("categoriesWin", "add", nullptr));
-        pushButton->setText(QCoreApplication::translate("categoriesWin", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\321\214", nullptr));
+        pushButton_exitCateg->setText(QCoreApplication::translate("categoriesWin", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

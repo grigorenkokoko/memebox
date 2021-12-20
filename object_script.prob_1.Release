@@ -4,6 +4,8 @@ release/mainwindow.o
 release/qdynamicbox.o
 release/qdynamicbutton.o
 release/qdynamiccheckbox.o
+release/qdynamiccheckboxtofile.o
+release/qdynamiccheckboxtopost.o
 release/registrationwin.o
 release/scaledpixmap.o
 release/secondwindow.o

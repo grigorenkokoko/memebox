@@ -37,6 +37,8 @@ private slots:
 
     void slot_on_pushButton_like_clicked();
     void slot_on_pushButton_dislike_clicked();
+    void slot_on_pushButton_download_clicked();
+
 
     void on_pushButton_clicked();
 
@@ -46,9 +48,11 @@ private:
 
 signals:
     void signalExit();
+    void signalUserWin();
 
 public slots:
     void slotExitProf();
+//    void slotUserWin();
 };
 
 #endif // SECONDWINDOW_H

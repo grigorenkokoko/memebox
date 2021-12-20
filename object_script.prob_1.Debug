@@ -4,6 +4,8 @@ debug/mainwindow.o
 debug/qdynamicbox.o
 debug/qdynamicbutton.o
 debug/qdynamiccheckbox.o
+debug/qdynamiccheckboxtofile.o
+debug/qdynamiccheckboxtopost.o
 debug/registrationwin.o
 debug/scaledpixmap.o
 debug/secondwindow.o

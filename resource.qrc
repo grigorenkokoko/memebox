@@ -11,5 +11,6 @@
         <file>img/dislike_click.png</file>
         <file>img/like.png</file>
         <file>img/like_click.png</file>
+        <file>img/download.png</file>
     </qresource>
 </RCC>

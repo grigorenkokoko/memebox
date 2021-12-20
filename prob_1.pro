@@ -15,6 +15,8 @@ SOURCES += \
     qdynamicbox.cpp \
     qdynamicbutton.cpp \
     qdynamiccheckbox.cpp \
+    qdynamiccheckboxtofile.cpp \
+    qdynamiccheckboxtopost.cpp \
     registrationwin.cpp \
     scaledpixmap.cpp \
     secondwindow.cpp \
@@ -26,6 +28,8 @@ HEADERS += \
     qdynamicbox.h \
     qdynamicbutton.h \
     qdynamiccheckbox.h \
+    qdynamiccheckboxtofile.h \
+    qdynamiccheckboxtopost.h \
     registrationwin.h \
     scaledpixmap.h \
     secondwindow.h \

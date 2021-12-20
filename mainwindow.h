@@ -3,6 +3,8 @@
 
 #include "secondwindow.h"
 #include "registrationwin.h"
+#include "userprofilewin.h"
+#include "categorieswin.h"
 
 #include <QMainWindow>
 
@@ -33,11 +35,15 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    SecondWindow *window;
-    registrationWin *regWin;
+    SecondWindow *window = NULL;
+    registrationWin *regWin = NULL;
+    userProfileWin *userWin = NULL;
+    categoriesWin *categWin = NULL;
 
 public slots:
-    void slotReg();
+    void slotSecWin();
+//    void slotUserWin();
+//    void slotCategWin();
     void slotExit();
 };
 #endif // MAINWINDOW_H

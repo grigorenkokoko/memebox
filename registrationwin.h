@@ -23,10 +23,11 @@ private slots:
 
 private:
     Ui::registrationWin *ui;
+    categoriesWin *categWin;
     SecondWindow *window;
 
 signals:
-    void signalReg();
+    void signalSecWin();
 };
 
 #endif // REGISTRATIONWIN_H

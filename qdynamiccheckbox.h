@@ -11,7 +11,8 @@ public:
     static int ResID;  // Статическая переменная, счетчик номеров Box
     int getID();
 
-    QString categorieName;
+//    QString categorieName;
+    QString categID;
 
 private:
     int boxID = 0;

@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     const uint offsetsAndSize[20];
-    char stringdata0[201];
+    char stringdata0[204];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -37,8 +37,8 @@ QT_MOC_LITERAL(74, 35), // "on_pushButton_authorization_c..."
 QT_MOC_LITERAL(110, 23), // "on_action_add_triggered"
 QT_MOC_LITERAL(134, 24), // "on_action_open_triggered"
 QT_MOC_LITERAL(159, 24), // "on_action_exit_triggered"
-QT_MOC_LITERAL(184, 7), // "slotReg"
-QT_MOC_LITERAL(192, 8) // "slotExit"
+QT_MOC_LITERAL(184, 10), // "slotSecWin"
+QT_MOC_LITERAL(195, 8) // "slotExit"
 
     },
     "MainWindow\0on_pushButton_exit_clicked\0"
@@ -46,7 +46,7 @@ QT_MOC_LITERAL(192, 8) // "slotExit"
     "on_pushButton_authorization_clicked\0"
     "on_action_add_triggered\0"
     "on_action_open_triggered\0"
-    "on_action_exit_triggered\0slotReg\0"
+    "on_action_exit_triggered\0slotSecWin\0"
     "slotExit"
 };
 #undef QT_MOC_LITERAL
@@ -99,7 +99,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_action_add_triggered(); break;
         case 4: _t->on_action_open_triggered(); break;
         case 5: _t->on_action_exit_triggered(); break;
-        case 6: _t->slotReg(); break;
+        case 6: _t->slotSecWin(); break;
         case 7: _t->slotExit(); break;
         default: ;
         }

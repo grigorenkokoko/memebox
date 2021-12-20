@@ -10,13 +10,32 @@ categoriesWin::categoriesWin(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QDynamicCheckBox *CheckBox = new QDynamicCheckBox();  // создаем новый GroupBox
-    CheckBox->setObjectName("CheckBox_" + QString::number(CheckBox->getID()));
-    //qDebug() << Box->getID();
-    ui->verticalLayout_2->addWidget(CheckBox, 1);  // Помещвем новый Box в слой verticalLayout_2
+    on_pushButton_2_clicked();
 }
 
 categoriesWin::~categoriesWin()
 {
     delete ui;
 }
+
+void categoriesWin::on_pushButton_2_clicked()
+{
+    for (int i = 0; i < 15; i++)
+    {
+        QDynamicCheckBox *CheckBox = new QDynamicCheckBox();  // создаем новый GroupBox
+        CheckBox->setObjectName("CheckBox_" + QString::number(CheckBox->getID()));
+        CheckBox->setText("categorie_" + QString::number(CheckBox->getID()));
+        CheckBox->categID = "categorie_" + QString::number(CheckBox->getID());
+//        CheckBox->setChecked(true);
+        ui->verticalLayout_2->addWidget(CheckBox, 1);  // Помещвем новый Box в слой verticalLayout_2
+    }
+}
+
+
+void categoriesWin::on_pushButton_exitCateg_clicked()
+{
+    emit signalExitCateg();
+    this->close();
+    QDynamicCheckBox::ResID = 0;
+}
+
