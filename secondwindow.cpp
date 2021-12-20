@@ -92,6 +92,11 @@ void SecondWindow::on_pushButton_addBox_clicked()
     QHBoxLayout *HLayout = new QHBoxLayout(Box);
     VLayout->addLayout(HLayout);
 
+    QLabel *labelLike = new QLabel();
+    HLayout->addWidget(labelLike);
+    labelLike->setObjectName("labelLike_" + QString::number(Box->getID()));
+    labelLike->setText(QString::number(Box->numberLike));
+
     QDynamicButton *buttonLike = new QDynamicButton();
     HLayout->addWidget(buttonLike);
     buttonLike->setObjectName("buttonLike_" + QString::number(Box->getID()));
@@ -107,6 +112,11 @@ void SecondWindow::on_pushButton_addBox_clicked()
     buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
     buttonDislike->setIconSize(QSize(20, 20));
     connect(buttonDislike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_dislike_clicked()));
+
+    QLabel *labelDisLike = new QLabel();
+    HLayout->addWidget(labelDisLike);
+    labelDisLike->setObjectName("labelDisLike_" + QString::number(Box->getID()));
+    labelDisLike->setText(QString::number(Box->numberDisLike));
 
     HLayout->addStretch(0); // Добавляет растягиваемое пространство (QSpacerItem) с нулевым минимальным размером
 
@@ -130,21 +140,32 @@ void SecondWindow::slot_on_pushButton_like_clicked()
     QDynamicButton *buttonLike = (QDynamicButton*) sender();
     QDynamicBox *Box = this->findChild<QDynamicBox *>("groupBox_" + QString::number(buttonLike->BoxNumber));
     QDynamicButton *buttonDisLike = this->findChild<QDynamicButton *>("buttonDisLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelLike = this->findChild<QLabel *>("labelLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelDisLike = this->findChild<QLabel *>("labelDisLike_" + QString::number(buttonLike->BoxNumber));
+
 
     switch (Box->like_status)
     {
     case LIKE:
         Box->like_status = NOTHING;
         buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        Box->numberLike--;
+        labelLike->setText(QString::number(Box->numberLike));
         break;
     case DISLIKE:
         Box->like_status = LIKE;
         buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
         buttonDisLike->setIcon(QIcon(":/resource/img/dislike.png"));
+        Box->numberDisLike--;
+        Box->numberLike++;
+        labelLike->setText(QString::number(Box->numberLike));
+        labelDisLike->setText(QString::number(Box->numberDisLike));
         break;
     case NOTHING:
         Box->like_status = LIKE;
         buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
+        Box->numberLike++;
+        labelLike->setText(QString::number(Box->numberLike));
         break;
     }
 }
@@ -154,21 +175,31 @@ void SecondWindow::slot_on_pushButton_dislike_clicked()
     QDynamicButton *buttonDisLike = (QDynamicButton*) sender();
     QDynamicBox *Box = this->findChild<QDynamicBox *>("groupBox_" + QString::number(buttonDisLike->BoxNumber));
     QDynamicButton *buttonLike = this->findChild<QDynamicButton *>("buttonLike_" + QString::number(buttonDisLike->BoxNumber));
+    QLabel *labelLike = this->findChild<QLabel *>("labelLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelDisLike = this->findChild<QLabel *>("labelDisLike_" + QString::number(buttonLike->BoxNumber));
 
     switch (Box->like_status)
     {
     case DISLIKE:
         Box->like_status = NOTHING;
         buttonDisLike->setIcon(QIcon(":/resource/img/dislike.png"));
+        Box->numberDisLike--;
+        labelDisLike->setText(QString::number(Box->numberDisLike));
         break;
     case LIKE:
         Box->like_status = DISLIKE;
         buttonLike->setIcon(QIcon(":/resource/img/like.png"));
         buttonDisLike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        Box->numberLike--;
+        Box->numberDisLike++;
+        labelLike->setText(QString::number(Box->numberLike));
+        labelDisLike->setText(QString::number(Box->numberDisLike));
         break;
     case NOTHING:
         Box->like_status = DISLIKE;
         buttonDisLike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        Box->numberDisLike++;
+        labelDisLike->setText(QString::number(Box->numberDisLike));
         break;
     }
 }
