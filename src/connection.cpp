@@ -2,6 +2,7 @@
 
 #include "connection.h"
 
+
 void Connection::start_connection() {
     read_request();
 }
@@ -34,6 +35,7 @@ void Connection::write_response() {
     std::cerr << "close accept\n";
 
     http::async_write(socket_, response_, [self](beast::error_code ec, std::size_t) {
+        //self->response_.clear();
         std::cout << "end write" << std::endl;
         self->socket_.shutdown(tcp::socket::shutdown_send, ec);
     });
