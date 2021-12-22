@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "client_memebox.h"
 #include "nlohmann/json.hpp"
 
 #include <QMessageBox>
@@ -18,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    QPixmap pix(":/resource/img/memebox.png");  // создаем обьект с картинкой
+    QPixmap pix("./resource/img/memebox.png");  // создаем обьект с картинкой
     // int w = ui->image->width();  // высота картинки
     // int h = ui->image->height();  // ширина картинки
     int w = 275;
@@ -96,7 +95,6 @@ void MainWindow::on_pushButton_authorization_clicked()
 
     if (client->check_status() == SUCCESS) {  // Проверка логина и пароля
 //        QMessageBox::information(this, "Авторизация", "Успешно\nПривет!");  // информационное окно
-        client->get_meme();
         ui->statusbar->showMessage("Успешно. ");
         hide();  // скрыть исходное окно
         window = new SecondWindow(this);

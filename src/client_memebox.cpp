@@ -9,6 +9,8 @@ std::string host = "127.0.0.1";
 std::string port = "8080";
 
 
+
+
 void Client::run() {
     std::cerr << "in run\n";
     resolver_.async_resolve(host, port, std::bind(&Client::on_resolve, shared_from_this(),
@@ -46,13 +48,15 @@ void Client::on_read(boost::system::error_code ec, std::size_t bytes_transferred
 
     std::cout << response_ << std::endl;
 
+    parse_body();
+
+
     socket_.shutdown(tcp::socket::shutdown_both, ec);
     socket_.close();
 }
 
 
 int Client::check_status() {
-    auto json_body = nlohmann::json::parse(response_.body().data());
     std::string status = json_body["status"];
     if (status == "success") {
         return SUCCESS;
@@ -65,14 +69,38 @@ int Client::check_status() {
     return ERROR;
 }
 
-int Client::get_meme() {
-    auto json_body = nlohmann::json::parse(response_.body().data());
+std::vector<unsigned char> &Client::get_meme() {
     std::string code_meme = json_body["meme"];
 
-    auto result = base64_decode(code_meme);
+    meme_byte = base64_decode(code_meme);
 
-    std::ofstream outfile("catic.jpeg", std::ios::out | std::ios::binary);
+    /*this->get_filename();
+
+    std::ofstream outfile(filename + ".jpeg", std::ios::out | std::ios::binary);
     outfile.write(reinterpret_cast<const char*>(result.data()), result.size());
+
+    return filename;*/
+    return meme_byte;
+}
+
+/*void Client::get_filename() {
+    static const std::vector<char> syms = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                                           'u', 'v', 'w', 'x', 'y', 'z', '_', '-', '$', '@'};
+    static int token_length = 20;
+    for (int i = 0; i < token_length; ++i) {
+        filename += syms[rand() % syms.size()];
+    }
+}*/
+
+
+int Client::get_count_likes() {
+    std::string likes = json_body["likes"];
+    return std::stoi(likes);
+}
+
+int Client::get_count_dislikes() {
+    std::string dislikes = json_body["dislikes"];
+    return std::stoi(dislikes);
 }
 
 /*int main() {

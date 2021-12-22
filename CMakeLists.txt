@@ -17,10 +17,12 @@ link_directories(${Boost_LIBRARY_DIR})
 
 find_package(nlohmann_json 3.2.0 REQUIRED)
 
-set(SOURCES src/client_memebox.cpp src/mainwindow.cpp src/registrationwin.cpp src/request.cpp src/scaledpixmap.cpp src/secondwindow.cpp src/base64.cpp)
+set(SOURCES src/client_memebox.cpp src/mainwindow.cpp src/registrationwin.cpp src/request.cpp src/scaledpixmap.cpp src/secondwindow.cpp src/base64.cpp
+        src/categorieswin.cpp src/qdynamicbox.cpp src/qdynamicbutton.cpp src/qdynamiccheckbox.cpp src/userprofilewin.cpp)
 set(HEADER_FILES include/client_memebox.h include/mainwindow.h include/registrationwin.h src/scaledpixmap.cpp include/secondwindow.h
         include/ui_mainwindow.h include/ui_registrationwin.h include/ui_secondwindow.h include/mainwindow.ui include/registrationwin.ui include/secondwindow.ui
-        include/base64.h
+        include/base64.h include/categorieswin.h include/categorieswin.ui include/qdynamicbox.h include/qdynamicbutton.h include/qdynamiccheckbox.h
+        include/ui_categorieswin.h include/ui_userprofilewin.h include/userprofilewin.h
         ${Boost_INCLUDE_DIR})
 
 #include_directories(include ${Boost_INCLUDE_DIR})

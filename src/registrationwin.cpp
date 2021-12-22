@@ -10,7 +10,6 @@
 #include "secondwindow.h"
 #include "mainwindow.h"
 
-#include "client_memebox.h"
 
 registrationWin::registrationWin(QWidget *parent) :
     QDialog(parent),
@@ -70,6 +69,8 @@ void registrationWin::on_pushButton_clicked()
             client->run();
 
             ioc.run();
+
+            std::cerr << client->get_response() << std::endl;
 
             if (client->check_status() == SUCCESS) {
                 emit signalReg();  // сигнал окну Main

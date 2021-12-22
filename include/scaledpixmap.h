@@ -1,5 +1,4 @@
-#ifndef SCALEDPIXMAP_H
-#define SCALEDPIXMAP_H
+#pragma once
 
 #include <QLabel>
 
@@ -9,4 +8,3 @@ public:
     ScaledPixmap();
 };
 
-#endif // SCALEDPIXMAP_H

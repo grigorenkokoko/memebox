@@ -26,6 +26,18 @@ void Request::do_request(request_info &request, std::string &body) {
             request_.target("/sign_in");
         } else if (request.target_request == REGISTRATION) {
             request_.target("/registration");
+        } else if (request.target_request == INCREASE_LIKE) {
+            request_.target("/increase_like");
+        } else if (request.target_request == INCREASE_DISLIKE) {
+            request_.target("/increase_dislike");
+        } else if (request.target_request == SET_MEME) {
+            request_.target("/set_meme");
+        } else if (request.target_request == REDUCE_LIKE) {
+            request_.target("/reduce_like");
+        } else if (request.target_request == REDUCE_DISLIKE) {
+            request_.target("/reduce_dislike");
+        } else if (request.target_request == DOWNLOAD_MEME) {
+            request_.target("/download_meme");
         }
         request_.body() = body;
         std::cerr << "body: " << request_.body().data() << std::endl;

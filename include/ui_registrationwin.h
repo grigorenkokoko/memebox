@@ -6,8 +6,7 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_REGISTRATIONWIN_H
-#define UI_REGISTRATIONWIN_H
+#pragma once
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -44,7 +43,7 @@ public:
     {
         if (registrationWin->objectName().isEmpty())
             registrationWin->setObjectName(QString::fromUtf8("registrationWin"));
-        registrationWin->resize(297, 249);
+        registrationWin->resize(297, 272);
         verticalLayout = new QVBoxLayout(registrationWin);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         groupBox = new QGroupBox(registrationWin);
@@ -93,11 +92,13 @@ public:
 
         lineEdit_pass = new QLineEdit(groupBox);
         lineEdit_pass->setObjectName(QString::fromUtf8("lineEdit_pass"));
+        lineEdit_pass->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(3, QFormLayout::FieldRole, lineEdit_pass);
 
         lineEdit_pass2 = new QLineEdit(groupBox);
         lineEdit_pass2->setObjectName(QString::fromUtf8("lineEdit_pass2"));
+        lineEdit_pass2->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(4, QFormLayout::FieldRole, lineEdit_pass2);
 
@@ -140,5 +141,3 @@ namespace Ui {
 } // namespace Ui
 
 QT_END_NAMESPACE
-
-#endif // UI_REGISTRATIONWIN_H

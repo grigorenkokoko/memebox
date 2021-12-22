@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SecondWindow</class>
- <widget class="QDialog" name="SecondWindow">
+ <class>categoriesWin</class>
+ <widget class="QDialog" name="categoriesWin">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>325</width>
-    <height>498</height>
+    <width>293</width>
+    <height>371</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,18 +24,26 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>301</width>
-        <height>440</height>
+        <width>269</width>
+        <height>315</height>
        </rect>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
+      <layout class="QVBoxLayout" name="verticalLayout_3">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2"/>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QCheckBox" name="checkBox">
+           <property name="text">
+            <string>CheckBox</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_addBox">
+        <widget class="QPushButton" name="pushButton_2">
          <property name="text">
-          <string>addBox</string>
+          <string>add</string>
          </property>
         </widget>
        </item>
@@ -44,22 +52,11 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QPushButton" name="pushButton">
-       <property name="text">
-        <string>Профиль</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_exit">
-       <property name="text">
-        <string>Выход</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QPushButton" name="pushButton">
+     <property name="text">
+      <string>Подтвердить</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

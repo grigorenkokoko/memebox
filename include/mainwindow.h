@@ -1,5 +1,4 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#pragma once
 
 #include "secondwindow.h"
 #include "registrationwin.h"
@@ -40,4 +39,3 @@ public slots:
     void slotReg();
     void slotExit();
 };
-#endif // MAINWINDOW_H

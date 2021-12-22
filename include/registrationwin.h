@@ -1,5 +1,4 @@
-#ifndef REGISTRATIONWIN_H
-#define REGISTRATIONWIN_H
+#pragma once
 
 #include <QDialog>
 #include <QStatusBar>
@@ -28,5 +27,3 @@ private:
 signals:
     void signalReg();
 };
-
-#endif // REGISTRATIONWIN_H

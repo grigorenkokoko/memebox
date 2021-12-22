@@ -6,8 +6,7 @@
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_MAINWINDOW_H
-#define UI_MAINWINDOW_H
+#pragma once
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -95,6 +94,7 @@ public:
 
         pass = new QLineEdit(groupBox);
         pass->setObjectName(QString::fromUtf8("pass"));
+        pass->setEchoMode(QLineEdit::Password);
 
         formLayout->setWidget(1, QFormLayout::FieldRole, pass);
 
@@ -173,5 +173,3 @@ namespace Ui {
 } // namespace Ui
 
 QT_END_NAMESPACE
-
-#endif // UI_MAINWINDOW_H
