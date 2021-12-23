@@ -60,7 +60,7 @@ void MainWindow::on_pushButton_registration_clicked()
     }
     regWin = new registrationWin(this);
     regWin->show();
-    connect(regWin, &registrationWin::signalSecWin, this, &MainWindow::slotSecWin);  //  связь между сигналом окна regWin и слотом окна Main, для того чтобы можно было вернуться в окно Main
+    connect(regWin, &registrationWin::signalCategWin, this, &MainWindow::slotCategWin);  //  связь между сигналом окна regWin и слотом окна Main, для того чтобы можно было вернуться в окно Main
 }
 
 
@@ -85,13 +85,13 @@ void MainWindow::on_pushButton_authorization_clicked()
 
         hide();  // скрыть исходное окно
 
-        if (window != NULL) {
-            window->close();
+        if (secWin != NULL) {
+            secWin->close();
             qDebug() << "Win close";
         }
-        window = new SecondWindow(this);
-        window->show();
-        connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+        secWin = new SecondWindow(this);
+        secWin->show();
+        connect(secWin, &SecondWindow::signalExit, this, &MainWindow::slotExit);
 
         //window = new SecondWindow(this);
         //window->show();
@@ -132,13 +132,24 @@ void MainWindow::on_action_exit_triggered()
 
 void MainWindow::slotSecWin()  // выполняется при сигнале от окна regWin
 {
-    if (window != NULL) {
-        window->close();
+    if (secWin != NULL) {
+        secWin->close();
         qDebug() << "Win close";
     }
-    window = new SecondWindow(this);
-    window->show();
-    connect(window, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+    secWin = new SecondWindow(this);
+    secWin->show();
+    connect(secWin, &SecondWindow::signalExit, this, &MainWindow::slotExit);
+}
+
+void MainWindow::slotCategWin()
+{
+    if (categWin != NULL) {
+        categWin->close();
+        qDebug() << "Win close";
+    }
+    categWin = new categoriesWin(this);
+    categWin->show();
+    connect(categWin, &categoriesWin::signalSecWin, this, &MainWindow::slotSecWin);
 }
 
 //void MainWindow::slotUserWin()

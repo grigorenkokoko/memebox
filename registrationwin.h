@@ -27,7 +27,7 @@ private:
     SecondWindow *window;
 
 signals:
-    void signalSecWin();
+    void signalCategWin();
 };
 
 #endif // REGISTRATIONWIN_H

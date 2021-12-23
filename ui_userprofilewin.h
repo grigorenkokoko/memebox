@@ -33,23 +33,22 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab;
     QGridLayout *gridLayout;
-    QLabel *label_5;
-    QPushButton *pushButton_8;
-    QLabel *label_6;
-    QLineEdit *lineEdit_2;
-    QLabel *label;
-    QLabel *label_2;
-    QLineEdit *lineEdit_5;
-    QLabel *label_3;
     QLabel *label_4;
-    QPushButton *pushButton;
-    QLineEdit *lineEdit_4;
-    QLineEdit *lineEdit_3;
+    QLabel *label;
     QPushButton *pushButton_2;
+    QLabel *label_6;
+    QLabel *label_2;
+    QPushButton *pushButton;
+    QLineEdit *lineEdit_newPass;
+    QLineEdit *lineEdit_nowPass;
     QPushButton *pushButton_6;
-    QLineEdit *lineEdit;
-    QLineEdit *lineEdit_6;
+    QLineEdit *lineEdit_surname;
+    QLineEdit *lineEdit_name;
+    QLabel *label_5;
+    QLineEdit *lineEdit_login;
+    QLineEdit *lineEdit_newPassAgain;
     QSpacerItem *verticalSpacer;
+    QLabel *label_3;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_2;
     QScrollArea *scrollArea;
@@ -101,93 +100,88 @@ public:
         tab->setObjectName(QString::fromUtf8("tab"));
         gridLayout = new QGridLayout(tab);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        label_5 = new QLabel(tab);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_4 = new QLabel(tab);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        gridLayout->addWidget(label_5, 4, 0, 1, 1);
-
-        pushButton_8 = new QPushButton(tab);
-        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
-
-        gridLayout->addWidget(pushButton_8, 7, 0, 1, 4);
-
-        label_6 = new QLabel(tab);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-
-        gridLayout->addWidget(label_6, 5, 0, 1, 1);
-
-        lineEdit_2 = new QLineEdit(tab);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
-
-        gridLayout->addWidget(lineEdit_2, 2, 1, 1, 2);
+        gridLayout->addWidget(label_4, 3, 0, 1, 1);
 
         label = new QLabel(tab);
         label->setObjectName(QString::fromUtf8("label"));
 
         gridLayout->addWidget(label, 0, 0, 1, 1);
 
+        pushButton_2 = new QPushButton(tab);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+
+        gridLayout->addWidget(pushButton_2, 2, 3, 1, 1);
+
+        label_6 = new QLabel(tab);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+
+        gridLayout->addWidget(label_6, 5, 0, 1, 1);
+
         label_2 = new QLabel(tab);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         gridLayout->addWidget(label_2, 1, 0, 1, 1);
-
-        lineEdit_5 = new QLineEdit(tab);
-        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
-        lineEdit_5->setEchoMode(QLineEdit::Password);
-
-        gridLayout->addWidget(lineEdit_5, 5, 2, 1, 2);
-
-        label_3 = new QLabel(tab);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-
-        gridLayout->addWidget(label_3, 2, 0, 1, 1);
-
-        label_4 = new QLabel(tab);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-
-        gridLayout->addWidget(label_4, 3, 0, 1, 1);
 
         pushButton = new QPushButton(tab);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
 
         gridLayout->addWidget(pushButton, 1, 3, 1, 1);
 
-        lineEdit_4 = new QLineEdit(tab);
-        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
-        lineEdit_4->setEchoMode(QLineEdit::Password);
+        lineEdit_newPass = new QLineEdit(tab);
+        lineEdit_newPass->setObjectName(QString::fromUtf8("lineEdit_newPass"));
+        lineEdit_newPass->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_4, 4, 2, 1, 2);
+        gridLayout->addWidget(lineEdit_newPass, 4, 2, 1, 2);
 
-        lineEdit_3 = new QLineEdit(tab);
-        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
-        lineEdit_3->setEchoMode(QLineEdit::Password);
+        lineEdit_nowPass = new QLineEdit(tab);
+        lineEdit_nowPass->setObjectName(QString::fromUtf8("lineEdit_nowPass"));
+        lineEdit_nowPass->setEchoMode(QLineEdit::Password);
 
-        gridLayout->addWidget(lineEdit_3, 3, 2, 1, 2);
-
-        pushButton_2 = new QPushButton(tab);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        gridLayout->addWidget(pushButton_2, 2, 3, 1, 1);
+        gridLayout->addWidget(lineEdit_nowPass, 3, 2, 1, 2);
 
         pushButton_6 = new QPushButton(tab);
         pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
 
         gridLayout->addWidget(pushButton_6, 6, 0, 1, 4);
 
-        lineEdit = new QLineEdit(tab);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit_surname = new QLineEdit(tab);
+        lineEdit_surname->setObjectName(QString::fromUtf8("lineEdit_surname"));
 
-        gridLayout->addWidget(lineEdit, 1, 1, 1, 2);
+        gridLayout->addWidget(lineEdit_surname, 2, 1, 1, 2);
 
-        lineEdit_6 = new QLineEdit(tab);
-        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
-        lineEdit_6->setReadOnly(true);
+        lineEdit_name = new QLineEdit(tab);
+        lineEdit_name->setObjectName(QString::fromUtf8("lineEdit_name"));
 
-        gridLayout->addWidget(lineEdit_6, 0, 1, 1, 2);
+        gridLayout->addWidget(lineEdit_name, 1, 1, 1, 2);
+
+        label_5 = new QLabel(tab);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+
+        gridLayout->addWidget(label_5, 4, 0, 1, 1);
+
+        lineEdit_login = new QLineEdit(tab);
+        lineEdit_login->setObjectName(QString::fromUtf8("lineEdit_login"));
+        lineEdit_login->setReadOnly(true);
+
+        gridLayout->addWidget(lineEdit_login, 0, 1, 1, 2);
+
+        lineEdit_newPassAgain = new QLineEdit(tab);
+        lineEdit_newPassAgain->setObjectName(QString::fromUtf8("lineEdit_newPassAgain"));
+        lineEdit_newPassAgain->setEchoMode(QLineEdit::Password);
+
+        gridLayout->addWidget(lineEdit_newPassAgain, 5, 2, 1, 2);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer, 8, 0, 1, 1);
+        gridLayout->addItem(verticalSpacer, 7, 0, 1, 1);
+
+        label_3 = new QLabel(tab);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
 
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
@@ -349,8 +343,8 @@ public:
 
         retranslateUi(userProfileWin);
 
-        tabWidget->setCurrentIndex(3);
-        tabWidget_2->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(0);
+        tabWidget_2->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(userProfileWin);
@@ -359,16 +353,15 @@ public:
     void retranslateUi(QDialog *userProfileWin)
     {
         userProfileWin->setWindowTitle(QCoreApplication::translate("userProfileWin", "Dialog", nullptr));
-        label_5->setText(QCoreApplication::translate("userProfileWin", "\320\235\320\276\320\262\321\213\320\271 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \320\272\320\260\321\202\320\265\320\263\320\276\321\200\320\270\320\270", nullptr));
-        label_6->setText(QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\262\321\202\320\276\321\200 \320\277\320\260\321\200\320\276\320\273\321\217", nullptr));
-        label->setText(QCoreApplication::translate("userProfileWin", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
-        label_2->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\274\321\217", nullptr));
-        label_3->setText(QCoreApplication::translate("userProfileWin", "\320\244\320\260\320\274\320\270\320\273\320\270\321\217", nullptr));
         label_4->setText(QCoreApplication::translate("userProfileWin", "\320\242\320\265\320\272\321\203\321\211\320\270\320\271 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
-        pushButton->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \320\270\320\274\321\217", nullptr));
+        label->setText(QCoreApplication::translate("userProfileWin", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
         pushButton_2->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \321\204\320\260\320\274\320\270\320\273\320\270\321\216", nullptr));
+        label_6->setText(QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\262\321\202\320\276\321\200 \320\277\320\260\321\200\320\276\320\273\321\217", nullptr));
+        label_2->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\274\321\217", nullptr));
+        pushButton->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \320\270\320\274\321\217", nullptr));
         pushButton_6->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_5->setText(QCoreApplication::translate("userProfileWin", "\320\235\320\276\320\262\321\213\320\271 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_3->setText(QCoreApplication::translate("userProfileWin", "\320\244\320\260\320\274\320\270\320\273\320\270\321\217", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("userProfileWin", "\320\237\321\200\320\276\321\204\320\270\320\273\321\214", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\275\321\200\320\260\320\262", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("userProfileWin", "\320\233\320\265\320\275\321\202\320\260", nullptr));

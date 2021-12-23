@@ -21,7 +21,6 @@ public:
 
 private:
     Ui::userProfileWin *ui;
-    categoriesWin *categWin;
 
     QString m_fileName;
     QFile *m_file;
@@ -32,14 +31,11 @@ private slots:
     void on_pushButton_3_clicked();
     void on_pushButton_4_clicked();
 
-    void on_pushButton_8_clicked();
-
     void on_pushButton__addCaegtoFile_clicked();
 
     void on_pushButton_addCaegtoPost_clicked();
 
 public slots:
-    void slotExitCateg();
 
 signals:
     void signalExitProf();

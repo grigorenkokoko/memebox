@@ -23,19 +23,19 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_registrationWin_t {
     const uint offsetsAndSize[8];
-    char stringdata0[52];
+    char stringdata0[54];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_registrationWin_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_registrationWin_t qt_meta_stringdata_registrationWin = {
     {
 QT_MOC_LITERAL(0, 15), // "registrationWin"
-QT_MOC_LITERAL(16, 12), // "signalSecWin"
-QT_MOC_LITERAL(29, 0), // ""
-QT_MOC_LITERAL(30, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(16, 14), // "signalCategWin"
+QT_MOC_LITERAL(31, 0), // ""
+QT_MOC_LITERAL(32, 21) // "on_pushButton_clicked"
 
     },
-    "registrationWin\0signalSecWin\0\0"
+    "registrationWin\0signalCategWin\0\0"
     "on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -74,7 +74,7 @@ void registrationWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         auto *_t = static_cast<registrationWin *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->signalSecWin(); break;
+        case 0: _t->signalCategWin(); break;
         case 1: _t->on_pushButton_clicked(); break;
         default: ;
         }
@@ -82,7 +82,7 @@ void registrationWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (registrationWin::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&registrationWin::signalSecWin)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&registrationWin::signalCategWin)) {
                 *result = 0;
                 return;
             }
@@ -138,7 +138,7 @@ int registrationWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void registrationWin::signalSecWin()
+void registrationWin::signalCategWin()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }

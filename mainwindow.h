@@ -35,13 +35,14 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    SecondWindow *window = NULL;
+    SecondWindow *secWin = NULL;
     registrationWin *regWin = NULL;
-    userProfileWin *userWin = NULL;
+//    userProfileWin *userWin = NULL;
     categoriesWin *categWin = NULL;
 
 public slots:
     void slotSecWin();
+    void slotCategWin();
 //    void slotUserWin();
 //    void slotCategWin();
     void slotExit();

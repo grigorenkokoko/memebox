@@ -52,6 +52,7 @@ signals:
 
 public slots:
     void slotExitProf();
+//    void slotAreaMaxValue();
 //    void slotUserWin();
 };
 

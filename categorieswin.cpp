@@ -34,8 +34,8 @@ void categoriesWin::on_pushButton_2_clicked()
 
 void categoriesWin::on_pushButton_exitCateg_clicked()
 {
-    emit signalExitCateg();
-    this->close();
+    emit signalSecWin();  // сигнал окну Main
+    hide();
     QDynamicCheckBox::ResID = 0;
 }
 

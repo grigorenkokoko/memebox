@@ -16,6 +16,10 @@ userProfileWin::userProfileWin(QWidget *parent) :
 
     on_pushButton__addCaegtoFile_clicked();
     on_pushButton_addCaegtoPost_clicked();
+
+    ui->lineEdit_login->setText("Dre");
+    ui->lineEdit_name->setText("Андрей");
+    ui->lineEdit_surname->setText("Мас");
 }
 
 userProfileWin::~userProfileWin()
@@ -79,20 +83,6 @@ void userProfileWin::on_pushButton_4_clicked()
     //newFile->close();
 
 
-}
-
-
-void userProfileWin::on_pushButton_8_clicked()
-{
-    hide();  // скрыть исходное окно
-    categWin = new categoriesWin(this);
-    categWin->show();
-    connect(categWin, &categoriesWin::signalExitCateg, this, &userProfileWin::slotExitCateg);
-}
-
-void userProfileWin::slotExitCateg()
-{
-    show();
 }
 
 void userProfileWin::on_pushButton__addCaegtoFile_clicked()

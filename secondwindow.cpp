@@ -14,6 +14,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     on_pushButton_addBox_clicked();
     on_pushButton_addBox_clicked();
+
 }
 
 SecondWindow::~SecondWindow()

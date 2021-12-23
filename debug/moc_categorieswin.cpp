@@ -22,23 +22,22 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_categoriesWin_t {
-    const uint offsetsAndSize[12];
-    char stringdata0[109];
+    const uint offsetsAndSize[10];
+    char stringdata0[84];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_categoriesWin_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_categoriesWin_t qt_meta_stringdata_categoriesWin = {
     {
 QT_MOC_LITERAL(0, 13), // "categoriesWin"
-QT_MOC_LITERAL(14, 15), // "signalExitCateg"
-QT_MOC_LITERAL(30, 0), // ""
-QT_MOC_LITERAL(31, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(55, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(77, 31) // "on_pushButton_exitCateg_clicked"
+QT_MOC_LITERAL(14, 12), // "signalSecWin"
+QT_MOC_LITERAL(27, 0), // ""
+QT_MOC_LITERAL(28, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(52, 31) // "on_pushButton_exitCateg_clicked"
 
     },
-    "categoriesWin\0signalExitCateg\0\0"
-    "on_pushButton_2_clicked\0on_pushButton_clicked\0"
+    "categoriesWin\0signalSecWin\0\0"
+    "on_pushButton_2_clicked\0"
     "on_pushButton_exitCateg_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -49,7 +48,7 @@ static const uint qt_meta_data_categoriesWin[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -57,18 +56,16 @@ static const uint qt_meta_data_categoriesWin[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   38,    2, 0x06,    1 /* Public */,
+       1,    0,   32,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   39,    2, 0x08,    2 /* Private */,
-       4,    0,   40,    2, 0x08,    3 /* Private */,
-       5,    0,   41,    2, 0x08,    4 /* Private */,
+       3,    0,   33,    2, 0x08,    2 /* Private */,
+       4,    0,   34,    2, 0x08,    3 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
-    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -81,16 +78,16 @@ void categoriesWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         auto *_t = static_cast<categoriesWin *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->signalExitCateg(); break;
+        case 0: _t->signalSecWin(); break;
         case 1: _t->on_pushButton_2_clicked(); break;
-        case 3: _t->on_pushButton_exitCateg_clicked(); break;
+        case 2: _t->on_pushButton_exitCateg_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (categoriesWin::*)();
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&categoriesWin::signalExitCateg)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&categoriesWin::signalSecWin)) {
                 *result = 0;
                 return;
             }
@@ -107,7 +104,7 @@ const QMetaObject categoriesWin::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_categoriesWin_t
 , QtPrivate::TypeAndForceComplete<categoriesWin, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -134,19 +131,19 @@ int categoriesWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        _id -= 3;
     }
     return _id;
 }
 
 // SIGNAL 0
-void categoriesWin::signalExitCateg()
+void categoriesWin::signalSecWin()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
 }
