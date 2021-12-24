@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SecondWindow_t {
-    const uint offsetsAndSize[22];
-    char stringdata0[233];
+    const uint offsetsAndSize[24];
+    char stringdata0[250];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_SecondWindow_t, stringdata0) + ofs), len 
@@ -39,7 +39,8 @@ QT_MOC_LITERAL(95, 31), // "slot_on_pushButton_like_clicked"
 QT_MOC_LITERAL(127, 34), // "slot_on_pushButton_dislike_cl..."
 QT_MOC_LITERAL(162, 35), // "slot_on_pushButton_download_c..."
 QT_MOC_LITERAL(198, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(220, 12) // "slotExitProf"
+QT_MOC_LITERAL(220, 12), // "slotExitProf"
+QT_MOC_LITERAL(233, 16) // "slotAreaMaxValue"
 
     },
     "SecondWindow\0signalExit\0\0signalUserWin\0"
@@ -48,7 +49,8 @@ QT_MOC_LITERAL(220, 12) // "slotExitProf"
     "slot_on_pushButton_like_clicked\0"
     "slot_on_pushButton_dislike_clicked\0"
     "slot_on_pushButton_download_clicked\0"
-    "on_pushButton_clicked\0slotExitProf"
+    "on_pushButton_clicked\0slotExitProf\0"
+    "slotAreaMaxValue"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +60,7 @@ static const uint qt_meta_data_SecondWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      10,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -66,23 +68,25 @@ static const uint qt_meta_data_SecondWindow[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   68,    2, 0x06,    1 /* Public */,
-       3,    0,   69,    2, 0x06,    2 /* Public */,
+       1,    0,   74,    2, 0x06,    1 /* Public */,
+       3,    0,   75,    2, 0x06,    2 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       4,    0,   70,    2, 0x08,    3 /* Private */,
-       5,    0,   71,    2, 0x08,    4 /* Private */,
-       6,    0,   72,    2, 0x08,    5 /* Private */,
-       7,    0,   73,    2, 0x08,    6 /* Private */,
-       8,    0,   74,    2, 0x08,    7 /* Private */,
-       9,    0,   75,    2, 0x08,    8 /* Private */,
-      10,    0,   76,    2, 0x0a,    9 /* Public */,
+       4,    0,   76,    2, 0x08,    3 /* Private */,
+       5,    0,   77,    2, 0x08,    4 /* Private */,
+       6,    0,   78,    2, 0x08,    5 /* Private */,
+       7,    0,   79,    2, 0x08,    6 /* Private */,
+       8,    0,   80,    2, 0x08,    7 /* Private */,
+       9,    0,   81,    2, 0x08,    8 /* Private */,
+      10,    0,   82,    2, 0x0a,    9 /* Public */,
+      11,    0,   83,    2, 0x0a,   10 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
 
  // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -109,6 +113,7 @@ void SecondWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 6: _t->slot_on_pushButton_download_clicked(); break;
         case 7: _t->on_pushButton_clicked(); break;
         case 8: _t->slotExitProf(); break;
+        case 9: _t->slotAreaMaxValue(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -139,7 +144,7 @@ const QMetaObject SecondWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_SecondWindow_t
 , QtPrivate::TypeAndForceComplete<SecondWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -166,13 +171,13 @@ int SecondWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 10)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 10;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 10)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 9;
+        _id -= 10;
     }
     return _id;
 }

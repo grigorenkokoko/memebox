@@ -2,6 +2,8 @@
 #include <QScrollArea>  // полосы прокрутки
 #include <QLabel>
 #include <QFileDialog>
+#include <QScrollBar>
+#include <QDebug>
 
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
@@ -14,6 +16,12 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     on_pushButton_addBox_clicked();
     on_pushButton_addBox_clicked();
+
+    QScrollBar *scrollBar = ui->scrollArea->verticalScrollBar();
+    scrollBar->setSliderDown(true);
+    connect(scrollBar, SIGNAL(valueChanged(0)), this, SLOT(slotAreaMaxValue()));
+    //connect(ui->scrollArea, SIGNAL(QAbstractSlider::valueChanged(0)), this, SLOT(slotAreaMaxValue()));
+
 
 }
 
@@ -233,6 +241,11 @@ void SecondWindow::on_pushButton_clicked()
 void SecondWindow::slotExitProf()
 {
     show();
+}
+
+void SecondWindow::slotAreaMaxValue()
+{
+    qDebug() << "aria == max";
 }
 //
 //void SecondWindow::slotUserWin()

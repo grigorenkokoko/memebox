@@ -3,6 +3,9 @@
 #include "qdynamiccheckbox.h"
 
 #include <QCheckBox>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 categoriesWin::categoriesWin(QWidget *parent) :
     QDialog(parent),
@@ -37,5 +40,24 @@ void categoriesWin::on_pushButton_exitCateg_clicked()
     emit signalSecWin();  // сигнал окну Main
     hide();
     QDynamicCheckBox::ResID = 0;
+
+
+    // Формируем json
+    QJsonObject obj;
+    QJsonArray JsonArray;
+    for(int i = 0; i < ui->verticalLayout_2->count(); i++)
+    {
+        QDynamicCheckBox *CheckBox = this->findChild<QDynamicCheckBox *>("CheckBox_" + QString::number(i + 1));
+        if (CheckBox->isChecked()) {
+            JsonArray.append(CheckBox->categID); // добавление категории в lson
+            //qDebug() << CheckBox->categID;
+        }
+    }
+    obj["categories"] = JsonArray;
+
+    QJsonDocument doc(obj);
+    QString strJson(doc.toJson(QJsonDocument::Compact));
+    std::string stdStrJson = strJson.toStdString();  // json в виде строки
+    qDebug() << strJson;
 }
 

@@ -29,11 +29,19 @@ private:
 private slots:
     void on_pushButton_5_clicked();
     void on_pushButton_3_clicked();
-    void on_pushButton_4_clicked();
+    void on_pushButton_downloadToFile_clicked();
 
-    void on_pushButton__addCaegtoFile_clicked();
+    void on_pushButton_newName_clicked();
 
-    void on_pushButton_addCaegtoPost_clicked();
+    void on_pushButton_newSurname_clicked();
+
+    void on_pushButton_newPass_clicked();
+
+    void on_pushButton_addCateg_clicked();
+
+    void on_pushButton_addCategToPost_clicked();
+
+    void on_pushButton_downloadToPost_clicked();
 
 public slots:
 
