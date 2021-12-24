@@ -167,6 +167,7 @@ release/qrc_resource.cpp: resource.qrc \
 		img/free-icon-open-folder-outline-25402.png \
 		img/dislike.png \
 		img/memebox.png \
+		img/plus.png \
 		img/dislike_click.png
 	C:\Qt\6.2.1\mingw81_64\bin\rcc.exe -name resource resource.qrc -o release\qrc_resource.cpp
 
@@ -1424,7 +1425,20 @@ release/categorieswin.o: categorieswin.cpp categorieswin.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QWidget \
 		qdynamiccheckbox.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QCheckBox \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qcheckbox.h
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qcheckbox.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonobject.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\categorieswin.o categorieswin.cpp
 
 release/main.o: main.cpp mainwindow.h \
@@ -2991,9 +3005,22 @@ release/secondwindow.o: secondwindow.cpp C:/Qt/6.2.1/mingw81_64/include/QtGui/QP
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qpicture.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtextdocument.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QFileDialog \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qfiledialog.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qdir.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfile.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfiledevice.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfileinfo.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcalendar.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qlocale.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QScrollBar \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qscrollbar.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractslider.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QDebug \
 		secondwindow.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QDialog \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qboxlayout.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qlayout.h \
@@ -3015,8 +3042,6 @@ release/secondwindow.o: secondwindow.cpp C:/Qt/6.2.1/mingw81_64/include/QtGui/QP
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QCheckBox \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QFile \
-		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfile.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfiledevice.h \
 		ui_secondwindow.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QVariant \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QApplication \
@@ -3038,7 +3063,6 @@ release/secondwindow.o: secondwindow.cpp C:/Qt/6.2.1/mingw81_64/include/QtGui/QP
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcoreapplication_platform.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qguiapplication.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtCore/qlocale.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qguiapplication_platform.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\secondwindow.o secondwindow.cpp
@@ -3191,6 +3215,8 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonobject.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonArray \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonarray.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h \
 		userprofilewin.h \
 		categorieswin.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QDialog \
@@ -3233,6 +3259,7 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QGroupBox \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QHBoxLayout \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QLabel \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qpicture.h \

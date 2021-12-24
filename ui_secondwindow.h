@@ -37,7 +37,8 @@ public:
     {
         if (SecondWindow->objectName().isEmpty())
             SecondWindow->setObjectName(QString::fromUtf8("SecondWindow"));
-        SecondWindow->resize(325, 498);
+        SecondWindow->resize(348, 498);
+        SecondWindow->setMaximumSize(QSize(16777215, 16777215));
         verticalLayout = new QVBoxLayout(SecondWindow);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         scrollArea = new QScrollArea(SecondWindow);
@@ -45,7 +46,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 301, 440));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 324, 440));
         verticalLayout_5 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_2 = new QVBoxLayout();

@@ -38,6 +38,7 @@ private slots:
     void slot_on_pushButton_like_clicked();
     void slot_on_pushButton_dislike_clicked();
     void slot_on_pushButton_download_clicked();
+    void slot_on_pushButton_plus_clicked();
 
 
     void on_pushButton_clicked();

@@ -10,6 +10,7 @@ int const LIKE = 1;
 int const DISLIKE = -1;
 int const NOTHING = 0;
 
+
 class QDynamicBox : public QGroupBox
 {
     Q_OBJECT

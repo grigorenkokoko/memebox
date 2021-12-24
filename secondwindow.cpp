@@ -4,6 +4,9 @@
 #include <QFileDialog>
 #include <QScrollBar>
 #include <QDebug>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
 
 #include "secondwindow.h"
 #include "ui_secondwindow.h"
@@ -101,6 +104,11 @@ void SecondWindow::on_pushButton_addBox_clicked()
     VLayout->addWidget(newLabel);  // добавляем newLabel в layout
     QHBoxLayout *HLayout = new QHBoxLayout(Box);
     VLayout->addLayout(HLayout);
+    QLabel *categLabel = new QLabel(this);
+    VLayout->addWidget(categLabel);
+    categLabel->setObjectName("categLabel_" + QString::number(Box->getID()));
+    //categLabel->setGeometry(0, 0, 100, 100);
+    categLabel->hide();
 
     QLabel *labelLike = new QLabel();
     HLayout->addWidget(labelLike);
@@ -129,6 +137,14 @@ void SecondWindow::on_pushButton_addBox_clicked()
     labelDisLike->setText(QString::number(Box->numberDisLike));
 
     HLayout->addStretch(0); // Добавляет растягиваемое пространство (QSpacerItem) с нулевым минимальным размером
+
+    QDynamicButton *buttonPlus = new QDynamicButton();
+    HLayout->addWidget(buttonPlus);
+    buttonPlus->setObjectName("buttonPlus_" + QString::number(Box->getID()));
+    buttonPlus->BoxNumber = Box->getID();
+    buttonPlus->setIcon(QIcon(":/resource/img/plus.png"));
+    buttonPlus->setIconSize(QSize(20, 20));
+    connect(buttonPlus, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_plus_clicked()));
 
     QDynamicButton *buttonDownload = new QDynamicButton();
     HLayout->addWidget(buttonDownload);
@@ -225,6 +241,43 @@ void SecondWindow::slot_on_pushButton_download_clicked()
     /*
      *  Скачивание картинки на устройство
      */
+}
+
+void SecondWindow::slot_on_pushButton_plus_clicked()
+{
+    QDynamicButton *buttonPlus = (QDynamicButton*) sender();
+    QDynamicBox *Box = this->findChild<QDynamicBox *>("groupBox_" + QString::number(buttonPlus->BoxNumber));
+    QLabel *categLabel = this->findChild<QLabel *>("categLabel_" + QString::number(Box->getID()));
+
+    // Пример Json
+    QString Json = "{\"categories\":[\"categories_1\",\"categories_2\",\"categories_3\",\"categories_4\",\"categories_5\"],\"name\":\"\"}";
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(Json.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+    QJsonArray jsonArray = jsonObject["categories"].toArray();
+
+
+
+    int i = 1;
+    switch (buttonPlus->clickStatus)
+    {
+    case NO_CLICKED:
+        buttonPlus->clickStatus = CLICKED;
+        categLabel->show();
+
+        categLabel->setText(jsonArray.at(0).toString());
+        while (jsonArray.at(i) != QJsonValue::Undefined)
+        {
+            categLabel->setText(categLabel->text() + ", \n" + jsonArray.at(i).toString());
+            i++;
+        }
+
+        break;
+    case CLICKED:
+        buttonPlus->clickStatus = NO_CLICKED;
+        categLabel->hide();
+        break;
+    }
 }
 
 void SecondWindow::on_pushButton_clicked()
