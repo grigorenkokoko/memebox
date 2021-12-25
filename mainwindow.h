@@ -42,7 +42,7 @@ private:
 
 public slots:
     void slotSecWin();
-    void slotCategWin();
+    void slotCategWin(QString ID);
 //    void slotUserWin();
 //    void slotCategWin();
     void slotExit();

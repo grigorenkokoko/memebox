@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SecondWindow_t {
-    const uint offsetsAndSize[26];
-    char stringdata0[282];
+    const uint offsetsAndSize[28];
+    char stringdata0[288];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_SecondWindow_t, stringdata0) + ofs), len 
@@ -41,7 +41,8 @@ QT_MOC_LITERAL(162, 35), // "slot_on_pushButton_download_c..."
 QT_MOC_LITERAL(198, 31), // "slot_on_pushButton_plus_clicked"
 QT_MOC_LITERAL(230, 21), // "on_pushButton_clicked"
 QT_MOC_LITERAL(252, 12), // "slotExitProf"
-QT_MOC_LITERAL(265, 16) // "slotAreaMaxValue"
+QT_MOC_LITERAL(265, 16), // "slotAreaMaxValue"
+QT_MOC_LITERAL(282, 5) // "value"
 
     },
     "SecondWindow\0signalExit\0\0signalUserWin\0"
@@ -52,7 +53,7 @@ QT_MOC_LITERAL(265, 16) // "slotAreaMaxValue"
     "slot_on_pushButton_download_clicked\0"
     "slot_on_pushButton_plus_clicked\0"
     "on_pushButton_clicked\0slotExitProf\0"
-    "slotAreaMaxValue"
+    "slotAreaMaxValue\0value"
 };
 #undef QT_MOC_LITERAL
 
@@ -82,7 +83,7 @@ static const uint qt_meta_data_SecondWindow[] = {
        9,    0,   87,    2, 0x08,    8 /* Private */,
       10,    0,   88,    2, 0x08,    9 /* Private */,
       11,    0,   89,    2, 0x0a,   10 /* Public */,
-      12,    0,   90,    2, 0x0a,   11 /* Public */,
+      12,    1,   90,    2, 0x0a,   11 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -97,7 +98,7 @@ static const uint qt_meta_data_SecondWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   13,
 
        0        // eod
 };
@@ -118,7 +119,7 @@ void SecondWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 7: _t->slot_on_pushButton_plus_clicked(); break;
         case 8: _t->on_pushButton_clicked(); break;
         case 9: _t->slotExitProf(); break;
-        case 10: _t->slotAreaMaxValue(); break;
+        case 10: _t->slotAreaMaxValue((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -138,7 +139,6 @@ void SecondWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
             }
         }
     }
-    (void)_a;
 }
 
 const QMetaObject SecondWindow::staticMetaObject = { {
@@ -149,7 +149,7 @@ const QMetaObject SecondWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_SecondWindow_t
 , QtPrivate::TypeAndForceComplete<SecondWindow, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,

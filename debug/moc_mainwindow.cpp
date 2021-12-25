@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    const uint offsetsAndSize[22];
-    char stringdata0[217];
+    const uint offsetsAndSize[24];
+    char stringdata0[220];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs), len 
@@ -39,7 +39,8 @@ QT_MOC_LITERAL(134, 24), // "on_action_open_triggered"
 QT_MOC_LITERAL(159, 24), // "on_action_exit_triggered"
 QT_MOC_LITERAL(184, 10), // "slotSecWin"
 QT_MOC_LITERAL(195, 12), // "slotCategWin"
-QT_MOC_LITERAL(208, 8) // "slotExit"
+QT_MOC_LITERAL(208, 2), // "ID"
+QT_MOC_LITERAL(211, 8) // "slotExit"
 
     },
     "MainWindow\0on_pushButton_exit_clicked\0"
@@ -48,7 +49,7 @@ QT_MOC_LITERAL(208, 8) // "slotExit"
     "on_action_add_triggered\0"
     "on_action_open_triggered\0"
     "on_action_exit_triggered\0slotSecWin\0"
-    "slotCategWin\0slotExit"
+    "slotCategWin\0ID\0slotExit"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,8 +74,8 @@ static const uint qt_meta_data_MainWindow[] = {
        6,    0,   72,    2, 0x08,    5 /* Private */,
        7,    0,   73,    2, 0x08,    6 /* Private */,
        8,    0,   74,    2, 0x0a,    7 /* Public */,
-       9,    0,   75,    2, 0x0a,    8 /* Public */,
-      10,    0,   76,    2, 0x0a,    9 /* Public */,
+       9,    1,   75,    2, 0x0a,    8 /* Public */,
+      11,    0,   78,    2, 0x0a,   10 /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -84,7 +85,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void,
 
        0        // eod
@@ -103,12 +104,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 4: _t->on_action_open_triggered(); break;
         case 5: _t->on_action_exit_triggered(); break;
         case 6: _t->slotSecWin(); break;
-        case 7: _t->slotCategWin(); break;
+        case 7: _t->slotCategWin((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 8: _t->slotExit(); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject MainWindow::staticMetaObject = { {
@@ -119,7 +119,7 @@ const QMetaObject MainWindow::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MainWindow_t
 , QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,

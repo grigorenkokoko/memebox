@@ -28,7 +28,6 @@ public:
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_5;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton_addBox;
     QHBoxLayout *horizontalLayout;
     QPushButton *pushButton;
     QPushButton *pushButton_exit;
@@ -53,11 +52,6 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
 
         verticalLayout_5->addLayout(verticalLayout_2);
-
-        pushButton_addBox = new QPushButton(scrollAreaWidgetContents);
-        pushButton_addBox->setObjectName(QString::fromUtf8("pushButton_addBox"));
-
-        verticalLayout_5->addWidget(pushButton_addBox);
 
         scrollArea->setWidget(scrollAreaWidgetContents);
 
@@ -87,7 +81,6 @@ public:
     void retranslateUi(QDialog *SecondWindow)
     {
         SecondWindow->setWindowTitle(QCoreApplication::translate("SecondWindow", "Dialog", nullptr));
-        pushButton_addBox->setText(QCoreApplication::translate("SecondWindow", "addBox", nullptr));
         pushButton->setText(QCoreApplication::translate("SecondWindow", "\320\237\321\200\320\276\321\204\320\270\320\273\321\214", nullptr));
         pushButton_exit->setText(QCoreApplication::translate("SecondWindow", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi

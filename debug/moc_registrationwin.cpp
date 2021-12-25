@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_registrationWin_t {
-    const uint offsetsAndSize[8];
-    char stringdata0[54];
+    const uint offsetsAndSize[10];
+    char stringdata0[57];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_registrationWin_t, stringdata0) + ofs), len 
@@ -32,10 +32,11 @@ static const qt_meta_stringdata_registrationWin_t qt_meta_stringdata_registratio
 QT_MOC_LITERAL(0, 15), // "registrationWin"
 QT_MOC_LITERAL(16, 14), // "signalCategWin"
 QT_MOC_LITERAL(31, 0), // ""
-QT_MOC_LITERAL(32, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(32, 2), // "ID"
+QT_MOC_LITERAL(35, 21) // "on_pushButton_clicked"
 
     },
-    "registrationWin\0signalCategWin\0\0"
+    "registrationWin\0signalCategWin\0\0ID\0"
     "on_pushButton_clicked"
 };
 #undef QT_MOC_LITERAL
@@ -54,13 +55,13 @@ static const uint qt_meta_data_registrationWin[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   26,    2, 0x06,    1 /* Public */,
+       1,    1,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   27,    2, 0x08,    2 /* Private */,
+       4,    0,   29,    2, 0x08,    3 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
 
  // slots: parameters
     QMetaType::Void,
@@ -74,21 +75,20 @@ void registrationWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         auto *_t = static_cast<registrationWin *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->signalCategWin(); break;
+        case 0: _t->signalCategWin((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->on_pushButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (registrationWin::*)();
+            using _t = void (registrationWin::*)(QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&registrationWin::signalCategWin)) {
                 *result = 0;
                 return;
             }
         }
     }
-    (void)_a;
 }
 
 const QMetaObject registrationWin::staticMetaObject = { {
@@ -98,7 +98,7 @@ const QMetaObject registrationWin::staticMetaObject = { {
     qt_static_metacall,
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_registrationWin_t
-, QtPrivate::TypeAndForceComplete<registrationWin, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<registrationWin, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -138,9 +138,10 @@ int registrationWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void registrationWin::signalCategWin()
+void registrationWin::signalCategWin(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

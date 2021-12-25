@@ -27,9 +27,6 @@ public:
     int n = 0;
 
 private slots:
-//    void on_pushButton_next_clicked();
-
-//    void on_pushButton_back_clicked();
 
     void on_pushButton_exit_clicked();
 
@@ -53,7 +50,7 @@ signals:
 
 public slots:
     void slotExitProf();
-    void slotAreaMaxValue();
+    void slotAreaMaxValue(int value);
 //    void slotUserWin();
 };
 

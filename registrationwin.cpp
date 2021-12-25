@@ -48,7 +48,7 @@ void registrationWin::on_pushButton_clicked()
             std::string str = strJson.toStdString();
             qDebug() << str.data();
 
-            emit signalCategWin();  // сигнал окну Main
+            emit signalCategWin("12345");  // сигнал окну Main
             hide();
             //this->close();
         } else {

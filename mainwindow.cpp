@@ -141,15 +141,18 @@ void MainWindow::slotSecWin()  // выполняется при сигнале �
     connect(secWin, &SecondWindow::signalExit, this, &MainWindow::slotExit);
 }
 
-void MainWindow::slotCategWin()
+void MainWindow::slotCategWin(QString ID)
 {
     if (categWin != NULL) {
         categWin->close();
         qDebug() << "Win close";
     }
     categWin = new categoriesWin(this);
+    categWin->userID = ID;
     categWin->show();
     connect(categWin, &categoriesWin::signalSecWin, this, &MainWindow::slotSecWin);
+    qDebug() << "in slot " + categWin->userID;
+
 }
 
 //void MainWindow::slotUserWin()

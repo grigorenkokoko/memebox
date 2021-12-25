@@ -21,9 +21,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
     on_pushButton_addBox_clicked();
 
     QScrollBar *scrollBar = ui->scrollArea->verticalScrollBar();
-    scrollBar->setSliderDown(true);
-    connect(scrollBar, SIGNAL(valueChanged(0)), this, SLOT(slotAreaMaxValue()));
-    //connect(ui->scrollArea, SIGNAL(QAbstractSlider::valueChanged(0)), this, SLOT(slotAreaMaxValue()));
+    connect(scrollBar, SIGNAL(valueChanged(int)), this, SLOT(slotAreaMaxValue(int)));
 
 
 }
@@ -32,53 +30,6 @@ SecondWindow::~SecondWindow()
 {
     delete ui;
 }
-
-//void SecondWindow::on_pushButton_next_clicked()
-//{
-//    if (this->n < 2) {
-//        this->n ++;
-//    }
-//    QPixmap pix1(":/resource/mem/mem0.jpg");  // создаем обьект с картинкой
-//    QPixmap pix2(":/resource/mem/mem1.jpg");
-//    QPixmap pix3(":/resource/mem/mem2.jpg");
-//    int w = 275;
-//    int h = 257;
-//    switch (this->n){
-//    case 0:
-//        ui->label->setPixmap(pix1.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    case 1:
-//        ui->label->setPixmap(pix2.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    case 2:
-//        ui->label->setPixmap(pix3.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    }
-//}
-
-
-//void SecondWindow::on_pushButton_back_clicked()
-//{
-//    if (this->n > 0) {
-//        this->n --;
-//    }
-//    QPixmap pix1(":/resource/mem/mem0.jpg");  // создаем обьект с картинкой
-//    QPixmap pix2(":/resource/mem/mem1.jpg");
-//    QPixmap pix3(":/resource/mem/mem2.jpgg");
-//    int w = 275;
-//    int h = 257;
-//    switch (this->n){
-//    case 0:
-//        ui->label->setPixmap(pix1.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    case 1:
-//        ui->label->setPixmap(pix2.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    case 2:
-//        ui->label->setPixmap(pix3.scaled(w, h, Qt::KeepAspectRatio));
-//        break;
-//    }
-//}
 
 
 void SecondWindow::on_pushButton_exit_clicked()
@@ -296,9 +247,13 @@ void SecondWindow::slotExitProf()
     show();
 }
 
-void SecondWindow::slotAreaMaxValue()
+void SecondWindow::slotAreaMaxValue(int value)
 {
-    qDebug() << "aria == max";
+    QScrollBar *scrollBar = (QScrollBar*) sender();
+    if(value == scrollBar->maximum())
+    {
+        on_pushButton_addBox_clicked();
+    }
 }
 //
 //void SecondWindow::slotUserWin()

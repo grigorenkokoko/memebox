@@ -22,6 +22,8 @@ categoriesWin::categoriesWin(QWidget *parent) :
 //        CheckBox->setChecked(true);
         ui->verticalLayout_2->addWidget(CheckBox, 1);  // Помещвем новый Box в слой verticalLayout_2
     }
+
+
 }
 
 categoriesWin::~categoriesWin()

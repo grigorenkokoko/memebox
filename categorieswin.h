@@ -15,6 +15,8 @@ public:
     explicit categoriesWin(QWidget *parent = nullptr);
     ~categoriesWin();
 
+    QString userID;
+
 private slots:
 
     void on_pushButton_exitCateg_clicked();

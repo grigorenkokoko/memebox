@@ -27,7 +27,7 @@ private:
     SecondWindow *window;
 
 signals:
-    void signalCategWin();
+    void signalCategWin(QString ID);
 };
 
 #endif // REGISTRATIONWIN_H

@@ -38,13 +38,6 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2"/>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_addBox">
-         <property name="text">
-          <string>addBox</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
