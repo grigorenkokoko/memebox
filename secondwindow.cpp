@@ -19,6 +19,7 @@ SecondWindow::SecondWindow(QWidget *parent) :
 
     on_pushButton_addBox_clicked();
     on_pushButton_addBox_clicked();
+    on_pushButton_addBox_clicked();
 
     QScrollBar *scrollBar = ui->scrollArea->verticalScrollBar();
     connect(scrollBar, SIGNAL(valueChanged(int)), this, SLOT(slotAreaMaxValue(int)));

@@ -3,6 +3,7 @@
 
 #include "categorieswin.h"
 #include "qdynamiccheckboxtofile.h"
+#include "qdynamicbutton.h"
 
 #include <QDialog>
 #include <QFile>
@@ -43,7 +44,18 @@ private slots:
 
     void on_pushButton_downloadToPost_clicked();
 
+    void add_to_liked();
+
+    void add_to_uploaded();
+
+    void slot_on_pushButton_like_clicked();
+    void slot_on_pushButton_dislike_clicked();
+    void slot_on_pushButton_download_clicked();
+    void slot_on_pushButton_plus_clicked();
+
 public slots:
+    void slotAreaMaxValueToLiked(int value);
+    void slotAreaMaxValueToUploaded(int value);
 
 signals:
     void signalExitProf();
