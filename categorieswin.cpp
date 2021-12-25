@@ -13,16 +13,6 @@ categoriesWin::categoriesWin(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    on_pushButton_2_clicked();
-}
-
-categoriesWin::~categoriesWin()
-{
-    delete ui;
-}
-
-void categoriesWin::on_pushButton_2_clicked()
-{
     for (int i = 0; i < 15; i++)
     {
         QDynamicCheckBox *CheckBox = new QDynamicCheckBox();  // создаем новый GroupBox
@@ -32,6 +22,11 @@ void categoriesWin::on_pushButton_2_clicked()
 //        CheckBox->setChecked(true);
         ui->verticalLayout_2->addWidget(CheckBox, 1);  // Помещвем новый Box в слой verticalLayout_2
     }
+}
+
+categoriesWin::~categoriesWin()
+{
+    delete ui;
 }
 
 

@@ -27,7 +27,6 @@ public:
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton_2;
     QPushButton *pushButton_exitCateg;
 
     void setupUi(QDialog *categoriesWin)
@@ -50,11 +49,6 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_2);
 
-        pushButton_2 = new QPushButton(scrollAreaWidgetContents);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-
-        verticalLayout_3->addWidget(pushButton_2);
-
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         verticalLayout->addWidget(scrollArea);
@@ -73,7 +67,6 @@ public:
     void retranslateUi(QDialog *categoriesWin)
     {
         categoriesWin->setWindowTitle(QCoreApplication::translate("categoriesWin", "Dialog", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("categoriesWin", "add", nullptr));
         pushButton_exitCateg->setText(QCoreApplication::translate("categoriesWin", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 

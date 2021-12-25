@@ -32,13 +32,6 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2"/>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_2">
-         <property name="text">
-          <string>add</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
     </widget>
