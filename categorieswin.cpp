@@ -6,6 +6,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QMessageBox>
 
 categoriesWin::categoriesWin(QWidget *parent) :
     QDialog(parent),
@@ -34,11 +35,6 @@ categoriesWin::~categoriesWin()
 
 void categoriesWin::on_pushButton_exitCateg_clicked()
 {
-    emit signalSecWin();  // сигнал окну Main
-    hide();
-    QDynamicCheckBox::ResID = 0;
-
-
     // Формируем json
     QJsonObject obj;
     QJsonArray JsonArray;
@@ -50,11 +46,22 @@ void categoriesWin::on_pushButton_exitCateg_clicked()
             //qDebug() << CheckBox->categID;
         }
     }
+
+    if (JsonArray.at(0) == QJsonValue::Undefined)
+    {
+        QMessageBox::warning(this, "Сообщения", "Категории не выбраны");
+        return;
+    }
+
     obj["categories"] = JsonArray;
 
     QJsonDocument doc(obj);
     QString strJson(doc.toJson(QJsonDocument::Compact));
     std::string stdStrJson = strJson.toStdString();  // json в виде строки
     qDebug() << strJson;
+
+    emit signalSecWin();  // сигнал окну Main
+    hide();
+    QDynamicCheckBox::ResID = 0;
 }
 

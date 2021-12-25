@@ -80,7 +80,7 @@ public:
 
     void retranslateUi(QDialog *SecondWindow)
     {
-        SecondWindow->setWindowTitle(QCoreApplication::translate("SecondWindow", "Dialog", nullptr));
+        SecondWindow->setWindowTitle(QCoreApplication::translate("SecondWindow", "\320\233\320\265\320\275\321\202\320\260", nullptr));
         pushButton->setText(QCoreApplication::translate("SecondWindow", "\320\237\321\200\320\276\321\204\320\270\320\273\321\214", nullptr));
         pushButton_exit->setText(QCoreApplication::translate("SecondWindow", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi

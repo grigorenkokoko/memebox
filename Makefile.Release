@@ -19,7 +19,7 @@ CXXFLAGS      = -fno-keep-inline-dllexport -O2 -std=gnu++1z -Wall -Wextra -Wextr
 INCPATH       = -I. -IC:/Qt/6.2.1/mingw81_64/include -IC:/Qt/6.2.1/mingw81_64/include/QtWidgets -IC:/Qt/6.2.1/mingw81_64/include/QtGui -IC:/Qt/6.2.1/mingw81_64/include/QtCore -Irelease -I. -I/include -IC:/Qt/6.2.1/mingw81_64/mkspecs/win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-s -Wl,-subsystem,windows -mthreads
-LIBS        =        C:\Qt\6.2.1\mingw81_64\lib\libQt6Widgets.a C:\Qt\6.2.1\mingw81_64\lib\libQt6Gui.a C:\Qt\6.2.1\mingw81_64\lib\libQt6Core.a -lmingw32 C:\Qt\6.2.1\mingw81_64\lib\libQt6EntryPoint.a -lshell32  
+LIBS        =        C:\Qt\6.2.1\mingw81_64\lib\libQt6Widgets.a C:\Qt\6.2.1\mingw81_64\lib\libQt6Gui.a C:\Qt\6.2.1\mingw81_64\lib\libQt6Core.a release\file_res.o -lmingw32 C:\Qt\6.2.1\mingw81_64\lib\libQt6EntryPoint.a -lshell32  
 QMAKE         = C:\Qt\6.2.1\mingw81_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -40,7 +40,7 @@ IDC           = idc
 IDL           = midl
 ZIP           = zip -r -9
 DEF_FILE      = 
-RES_FILE      = 
+RES_FILE      = release\file_res.o
 SED           = $(QMAKE) -install sed
 MOVE          = move
 
@@ -122,8 +122,11 @@ DESTDIR_TARGET = release\prob_1.exe
 first: all
 all: Makefile.Release  release/prob_1.exe
 
-release/prob_1.exe: C:/Qt/6.2.1/mingw81_64/lib/libQt6Widgets.a C:/Qt/6.2.1/mingw81_64/lib/libQt6Gui.a C:/Qt/6.2.1/mingw81_64/lib/libQt6Core.a C:/Qt/6.2.1/mingw81_64/lib/libQt6EntryPoint.a ui_categorieswin.h ui_mainwindow.h ui_registrationwin.h ui_secondwindow.h ui_userprofilewin.h $(OBJECTS) 
+release/prob_1.exe: C:/Qt/6.2.1/mingw81_64/lib/libQt6Widgets.a C:/Qt/6.2.1/mingw81_64/lib/libQt6Gui.a C:/Qt/6.2.1/mingw81_64/lib/libQt6Core.a C:/Qt/6.2.1/mingw81_64/lib/libQt6EntryPoint.a ui_categorieswin.h ui_mainwindow.h ui_registrationwin.h ui_secondwindow.h ui_userprofilewin.h $(OBJECTS) release/file_res.o
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.prob_1.Release  $(LIBS)
+
+release/file_res.o: file.rc
+	windres -i file.rc -o release\file_res.o --include-dir=. $(DEFINES)
 
 qmake: FORCE
 	@$(QMAKE) -o Makefile.Release prob_1.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -135,6 +138,7 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) release\categorieswin.o release\main.o release\mainwindow.o release\qdynamicbox.o release\qdynamicbutton.o release\qdynamiccheckbox.o release\qdynamiccheckboxtofile.o release\qdynamiccheckboxtopost.o release\registrationwin.o release\scaledpixmap.o release\secondwindow.o release\userprofilewin.o release\qrc_resource.o release\moc_categorieswin.o release\moc_mainwindow.o release\moc_qdynamicbox.o release\moc_qdynamicbutton.o release\moc_registrationwin.o release\moc_secondwindow.o release\moc_userprofilewin.o
+	-$(DEL_FILE) release\file_res.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -1210,6 +1214,9 @@ release/moc_userprofilewin.cpp: userprofilewin.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qicon.h \
+		qdynamicbutton.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QFile \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfile.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qfiledevice.h \
@@ -1828,10 +1835,9 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtextoption.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QMenu \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmenu.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmenu.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h \
@@ -3019,6 +3025,17 @@ release/secondwindow.o: secondwindow.cpp C:/Qt/6.2.1/mingw81_64/include/QtGui/QP
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qscrollbar.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractslider.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QDebug \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonDocument \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsondocument.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonvalue.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcborvalue.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qcborcommon.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qregularexpression.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/quuid.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonObject \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonobject.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/QJsonArray \
+		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonarray.h \
 		secondwindow.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QDialog \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout \
@@ -3217,6 +3234,9 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/qjsonarray.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QScrollBar \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qscrollbar.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractslider.h \
 		userprofilewin.h \
 		categorieswin.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QDialog \
@@ -3225,6 +3245,9 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qcheckbox.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qicon.h \
+		qdynamicbutton.h \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QFile \
 		ui_userprofilewin.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtCore/QVariant \
@@ -3270,8 +3293,6 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qpen.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtGui/qtextoption.h \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QScrollArea \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qscrollarea.h \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/qabstractscrollarea.h \
@@ -3281,7 +3302,8 @@ release/userprofilewin.o: userprofilewin.cpp C:/Qt/6.2.1/mingw81_64/include/QtWi
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.2.1/mingw81_64/include/QtWidgets/QWidget \
 		qdynamiccheckbox.h \
-		qdynamiccheckboxtopost.h
+		qdynamiccheckboxtopost.h \
+		qdynamicbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\userprofilewin.o userprofilewin.cpp
 
 release/qrc_resource.o: release/qrc_resource.cpp 

@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>297</width>
-    <height>563</height>
+    <height>487</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Авторизация</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -97,16 +97,6 @@
      <height>25</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
-    <property name="title">
-     <string>Файл</string>
-    </property>
-    <addaction name="action_add"/>
-    <addaction name="separator"/>
-    <addaction name="action_open"/>
-    <addaction name="action_exit"/>
-   </widget>
-   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_add">

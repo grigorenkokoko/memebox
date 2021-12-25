@@ -66,7 +66,7 @@ public:
 
     void retranslateUi(QDialog *categoriesWin)
     {
-        categoriesWin->setWindowTitle(QCoreApplication::translate("categoriesWin", "Dialog", nullptr));
+        categoriesWin->setWindowTitle(QCoreApplication::translate("categoriesWin", "\320\232\320\260\321\202\320\265\320\263\320\276\321\200\320\270\320\270", nullptr));
         pushButton_exitCateg->setText(QCoreApplication::translate("categoriesWin", "\320\237\320\276\320\264\321\202\320\262\320\265\321\200\320\264\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 

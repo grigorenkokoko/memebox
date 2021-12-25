@@ -51,13 +51,24 @@ void userProfileWin::on_pushButton_5_clicked()
 
 void userProfileWin::on_pushButton_3_clicked()
 {
-    m_fileName = QFileDialog::getOpenFileName(this, "Get Any File");
+    m_fileName = QFileDialog::getOpenFileName(this, "", "", tr("Images (*.png *.xpm *.jpg *.jpeg)"));
     ui->lineEdit_file->setText(m_fileName);
 }
 
 
 void userProfileWin::on_pushButton_downloadToFile_clicked()
 {
+    if (ui->lineEdit_file->text() == "")
+    {
+        QMessageBox::warning(this, "Сообщения", "Файл не выбран");
+        return;
+    }
+    if (ui->verticalLayout_7->count() == 0)
+    {
+        QMessageBox::warning(this, "Сообщения", "Введите категорию");
+        return;
+    }
+
     // Создаём объект файла при запуске загрузки
     m_file = new QFile(ui->lineEdit_file->text());
     if (!m_file->open(QIODevice::ReadOnly)) return;
@@ -81,6 +92,13 @@ void userProfileWin::on_pushButton_downloadToFile_clicked()
             qDebug() << CheckBox->categID;
         }
     }
+
+    if (JsonArray.at(0) == QJsonValue::Undefined)
+    {
+        QMessageBox::warning(this, "Сообщения", "Категории не выбраны");
+        return;
+    }
+
     obj["categories"] = JsonArray;
 
     QJsonDocument doc(obj);
@@ -96,6 +114,15 @@ void userProfileWin::on_pushButton_downloadToFile_clicked()
     //newFile->close();
 
 
+    //Очистка окна
+    ui->lineEdit_file->setText("");
+    int numberCheckBox = ui->verticalLayout_7->count();
+    for(int i = 0; i < numberCheckBox; i++)
+    {
+        QDynamicCheckBoxToFile *CheckBox = this->findChild<QDynamicCheckBoxToFile *>("CheckBoxtoFile_" + QString::number(i + 1));
+        delete CheckBox;
+    }
+    QDynamicCheckBoxToFile::ResID = 0;
 }
 
 
@@ -118,7 +145,7 @@ void userProfileWin::on_pushButton_newPass_clicked()
     QString nowPass = ui->lineEdit_nowPass->text();
     qDebug() << nowPass;
 
-    // проверка текущего пороля
+    // проверка текущего пароля
 
     QString newPass = ui->lineEdit_newPass->text();
     QString newPassAgain = ui->lineEdit_newPassAgain->text();
@@ -193,6 +220,17 @@ void userProfileWin::on_pushButton_addCategToPost_clicked()
 
 void userProfileWin::on_pushButton_downloadToPost_clicked()
 {
+    if (ui->lineEdit_post->text() == "")
+    {
+        QMessageBox::warning(this, "Сообщения", "Ссылка не введена");
+        return;
+    }
+    if (ui->verticalLayout_9->count() == 0)
+    {
+        QMessageBox::warning(this, "Сообщения", "Введите категорию");
+        return;
+    }
+
     QString post = ui->lineEdit_post->text();
     qDebug() << post;
 
@@ -211,13 +249,31 @@ void userProfileWin::on_pushButton_downloadToPost_clicked()
             //qDebug() << CheckBox->categID;
         }
     }
+
+    if (JsonArray.at(0) == QJsonValue::Undefined)
+    {
+        QMessageBox::warning(this, "Сообщения", "Категории не выбраны");
+        return;
+    }
+
     obj["categories"] = JsonArray;
 
     QJsonDocument doc(obj);
     QString strJson(doc.toJson(QJsonDocument::Compact));
     std::string stdStrJson = strJson.toStdString();  // json в виде строки
     qDebug() << strJson;
+
+    //Очистка окна
+    ui->lineEdit_post->setText("");
+    int numberCheckBox = ui->verticalLayout_9->count();
+    for(int i = 0; i < numberCheckBox; i++)
+    {
+        QDynamicCheckBoxToPost *CheckBox = this->findChild<QDynamicCheckBoxToPost *>("CheckBoxtoPost_" + QString::number(i + 1));
+        delete CheckBox;
+    }
+    QDynamicCheckBoxToPost::ResID = 0;
 }
+
 
 void userProfileWin::add_to_liked()
 {
