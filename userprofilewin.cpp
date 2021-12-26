@@ -308,7 +308,7 @@ void userProfileWin::add_to_liked()
     HLayout->addWidget(buttonLike);
     buttonLike->setObjectName("buttonLike_" + QString::number(Box->getID()));
     buttonLike->BoxNumber = Box->getID();
-    buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));  // добавление иконки на кнопку
+    //buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));  // добавление иконки на кнопку
     buttonLike->setIconSize(QSize(20, 20));  // размер кнопки
     connect(buttonLike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_like_clicked()));  // связываем сигнал нажатия кнопки и слот нажатия кнопки
 
@@ -316,7 +316,7 @@ void userProfileWin::add_to_liked()
     HLayout->addWidget(buttonDislike);
     buttonDislike->setObjectName("buttonDisLike_" + QString::number(Box->getID()));
     buttonDislike->BoxNumber = Box->getID();
-    buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+    //buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
     buttonDislike->setIconSize(QSize(20, 20));
     connect(buttonDislike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_dislike_clicked()));
 
@@ -342,6 +342,24 @@ void userProfileWin::add_to_liked()
     buttonDownload->setIcon(QIcon(":/resource/img/download.png"));
     buttonDownload->setIconSize(QSize(20, 20));
     connect(buttonDownload, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_download_clicked()));
+
+    // выставление иконки like/dislike по like_status
+    Box->like_status = LIKE;
+    switch (Box->like_status)
+    {
+    case LIKE:
+        buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+        break;
+    case DISLIKE:
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        break;
+    case NOTHING:
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+        break;
+    }
 
     QPixmap pix1(":/resource/mem/mem0.jpg");
     int w = 275;
@@ -382,7 +400,7 @@ void userProfileWin::add_to_uploaded()
     HLayout->addWidget(buttonLike);
     buttonLike->setObjectName("buttonLike_" + QString::number(Box->getID()));
     buttonLike->BoxNumber = Box->getID();
-    buttonLike->setIcon(QIcon(":/resource/img/like.png"));  // добавление иконки на кнопку
+    //buttonLike->setIcon(QIcon(":/resource/img/like.png"));  // добавление иконки на кнопку
     buttonLike->setIconSize(QSize(20, 20));  // размер кнопки
     connect(buttonLike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_like_clicked()));  // связываем сигнал нажатия кнопки и слот нажатия кнопки
 
@@ -390,7 +408,7 @@ void userProfileWin::add_to_uploaded()
     HLayout->addWidget(buttonDislike);
     buttonDislike->setObjectName("buttonDisLike_" + QString::number(Box->getID()));
     buttonDislike->BoxNumber = Box->getID();
-    buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+    //buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
     buttonDislike->setIconSize(QSize(20, 20));
     connect(buttonDislike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_dislike_clicked()));
 
@@ -416,6 +434,24 @@ void userProfileWin::add_to_uploaded()
     buttonDownload->setIcon(QIcon(":/resource/img/download.png"));
     buttonDownload->setIconSize(QSize(20, 20));
     connect(buttonDownload, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_download_clicked()));
+
+    // выставление иконки like/dislike по like_status
+    Box->like_status = NOTHING;
+    switch (Box->like_status)
+    {
+    case LIKE:
+        buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+        break;
+    case DISLIKE:
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        break;
+    case NOTHING:
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
+        break;
+    }
 
     QPixmap pix1(":/resource/mem/mem0.jpg");
     int w = 275;
