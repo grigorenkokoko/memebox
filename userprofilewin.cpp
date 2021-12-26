@@ -297,8 +297,6 @@ void userProfileWin::add_to_liked()
     //categLabel->setGeometry(0, 0, 100, 100);
     categLabel->hide();
 
-    Box->like_status = LIKE;
-
     QLabel *labelLike = new QLabel();
     HLayout->addWidget(labelLike);
     labelLike->setObjectName("labelLike_" + QString::number(Box->getID()));
