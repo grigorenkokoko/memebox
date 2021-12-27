@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_userProfileWin_t {
-    const uint offsetsAndSize[42];
-    char stringdata0[535];
+    const uint offsetsAndSize[54];
+    char stringdata0[750];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_userProfileWin_t, stringdata0) + ofs), len 
@@ -43,13 +43,19 @@ QT_MOC_LITERAL(240, 36), // "on_pushButton_addCategToPost_..."
 QT_MOC_LITERAL(277, 36), // "on_pushButton_downloadToPost_..."
 QT_MOC_LITERAL(314, 12), // "add_to_liked"
 QT_MOC_LITERAL(327, 15), // "add_to_uploaded"
-QT_MOC_LITERAL(343, 31), // "slot_on_pushButton_like_clicked"
-QT_MOC_LITERAL(375, 34), // "slot_on_pushButton_dislike_cl..."
-QT_MOC_LITERAL(410, 35), // "slot_on_pushButton_download_c..."
-QT_MOC_LITERAL(446, 31), // "slot_on_pushButton_plus_clicked"
-QT_MOC_LITERAL(478, 23), // "slotAreaMaxValueToLiked"
-QT_MOC_LITERAL(502, 5), // "value"
-QT_MOC_LITERAL(508, 26) // "slotAreaMaxValueToUploaded"
+QT_MOC_LITERAL(343, 6), // "search"
+QT_MOC_LITERAL(350, 31), // "slot_on_pushButton_like_clicked"
+QT_MOC_LITERAL(382, 34), // "slot_on_pushButton_dislike_cl..."
+QT_MOC_LITERAL(417, 35), // "slot_on_pushButton_download_c..."
+QT_MOC_LITERAL(453, 31), // "slot_on_pushButton_plus_clicked"
+QT_MOC_LITERAL(485, 42), // "slot_on_pushButton_like_toupl..."
+QT_MOC_LITERAL(528, 45), // "slot_on_pushButton_dislike_to..."
+QT_MOC_LITERAL(574, 46), // "slot_on_pushButton_download_t..."
+QT_MOC_LITERAL(621, 42), // "slot_on_pushButton_plus_toupl..."
+QT_MOC_LITERAL(664, 28), // "on_pushButton_search_clicked"
+QT_MOC_LITERAL(693, 23), // "slotAreaMaxValueToLiked"
+QT_MOC_LITERAL(717, 5), // "value"
+QT_MOC_LITERAL(723, 26) // "slotAreaMaxValueToUploaded"
 
     },
     "userProfileWin\0signalExitProf\0\0"
@@ -61,11 +67,16 @@ QT_MOC_LITERAL(508, 26) // "slotAreaMaxValueToUploaded"
     "on_pushButton_addCateg_clicked\0"
     "on_pushButton_addCategToPost_clicked\0"
     "on_pushButton_downloadToPost_clicked\0"
-    "add_to_liked\0add_to_uploaded\0"
+    "add_to_liked\0add_to_uploaded\0search\0"
     "slot_on_pushButton_like_clicked\0"
     "slot_on_pushButton_dislike_clicked\0"
     "slot_on_pushButton_download_clicked\0"
     "slot_on_pushButton_plus_clicked\0"
+    "slot_on_pushButton_like_touploaded_clicked\0"
+    "slot_on_pushButton_dislike_touploaded_clicked\0"
+    "slot_on_pushButton_download_touploaded_clicked\0"
+    "slot_on_pushButton_plus_touploaded_clicked\0"
+    "on_pushButton_search_clicked\0"
     "slotAreaMaxValueToLiked\0value\0"
     "slotAreaMaxValueToUploaded"
 };
@@ -77,7 +88,7 @@ static const uint qt_meta_data_userProfileWin[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -85,26 +96,31 @@ static const uint qt_meta_data_userProfileWin[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,  122,    2, 0x06,    1 /* Public */,
+       1,    0,  152,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,  123,    2, 0x08,    2 /* Private */,
-       4,    0,  124,    2, 0x08,    3 /* Private */,
-       5,    0,  125,    2, 0x08,    4 /* Private */,
-       6,    0,  126,    2, 0x08,    5 /* Private */,
-       7,    0,  127,    2, 0x08,    6 /* Private */,
-       8,    0,  128,    2, 0x08,    7 /* Private */,
-       9,    0,  129,    2, 0x08,    8 /* Private */,
-      10,    0,  130,    2, 0x08,    9 /* Private */,
-      11,    0,  131,    2, 0x08,   10 /* Private */,
-      12,    0,  132,    2, 0x08,   11 /* Private */,
-      13,    0,  133,    2, 0x08,   12 /* Private */,
-      14,    0,  134,    2, 0x08,   13 /* Private */,
-      15,    0,  135,    2, 0x08,   14 /* Private */,
-      16,    0,  136,    2, 0x08,   15 /* Private */,
-      17,    0,  137,    2, 0x08,   16 /* Private */,
-      18,    1,  138,    2, 0x0a,   17 /* Public */,
-      20,    1,  141,    2, 0x0a,   19 /* Public */,
+       3,    0,  153,    2, 0x08,    2 /* Private */,
+       4,    0,  154,    2, 0x08,    3 /* Private */,
+       5,    0,  155,    2, 0x08,    4 /* Private */,
+       6,    0,  156,    2, 0x08,    5 /* Private */,
+       7,    0,  157,    2, 0x08,    6 /* Private */,
+       8,    0,  158,    2, 0x08,    7 /* Private */,
+       9,    0,  159,    2, 0x08,    8 /* Private */,
+      10,    0,  160,    2, 0x08,    9 /* Private */,
+      11,    0,  161,    2, 0x08,   10 /* Private */,
+      12,    0,  162,    2, 0x08,   11 /* Private */,
+      13,    1,  163,    2, 0x08,   12 /* Private */,
+      15,    0,  166,    2, 0x08,   14 /* Private */,
+      16,    0,  167,    2, 0x08,   15 /* Private */,
+      17,    0,  168,    2, 0x08,   16 /* Private */,
+      18,    0,  169,    2, 0x08,   17 /* Private */,
+      19,    0,  170,    2, 0x08,   18 /* Private */,
+      20,    0,  171,    2, 0x08,   19 /* Private */,
+      21,    0,  172,    2, 0x08,   20 /* Private */,
+      22,    0,  173,    2, 0x08,   21 /* Private */,
+      23,    0,  174,    2, 0x08,   22 /* Private */,
+      24,    1,  175,    2, 0x0a,   23 /* Public */,
+      26,    1,  178,    2, 0x0a,   25 /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -120,13 +136,18 @@ static const uint qt_meta_data_userProfileWin[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   19,
-    QMetaType::Void, QMetaType::Int,   19,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,   25,
+    QMetaType::Void, QMetaType::Int,   25,
 
        0        // eod
 };
@@ -148,13 +169,18 @@ void userProfileWin::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         case 8: _t->on_pushButton_addCategToPost_clicked(); break;
         case 9: _t->on_pushButton_downloadToPost_clicked(); break;
         case 10: _t->add_to_liked(); break;
-        case 11: _t->add_to_uploaded(); break;
+        case 11: _t->add_to_uploaded((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 12: _t->slot_on_pushButton_like_clicked(); break;
         case 13: _t->slot_on_pushButton_dislike_clicked(); break;
         case 14: _t->slot_on_pushButton_download_clicked(); break;
         case 15: _t->slot_on_pushButton_plus_clicked(); break;
-        case 16: _t->slotAreaMaxValueToLiked((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 17: _t->slotAreaMaxValueToUploaded((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->slot_on_pushButton_like_touploaded_clicked(); break;
+        case 17: _t->slot_on_pushButton_dislike_touploaded_clicked(); break;
+        case 18: _t->slot_on_pushButton_download_touploaded_clicked(); break;
+        case 19: _t->slot_on_pushButton_plus_touploaded_clicked(); break;
+        case 20: _t->on_pushButton_search_clicked(); break;
+        case 21: _t->slotAreaMaxValueToLiked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 22: _t->slotAreaMaxValueToUploaded((*reinterpret_cast< int(*)>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -177,7 +203,7 @@ const QMetaObject userProfileWin::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_userProfileWin_t
 , QtPrivate::TypeAndForceComplete<userProfileWin, std::true_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>
 
 
 >,
@@ -204,13 +230,13 @@ int userProfileWin::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 23)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 18;
+        _id -= 23;
     }
     return _id;
 }

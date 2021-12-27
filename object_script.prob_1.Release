@@ -2,6 +2,7 @@ release/categorieswin.o
 release/main.o
 release/mainwindow.o
 release/qdynamicbox.o
+release/qdynamicboxtouploaded.o
 release/qdynamicbutton.o
 release/qdynamiccheckbox.o
 release/qdynamiccheckboxtofile.o
@@ -14,6 +15,7 @@ release/qrc_resource.o
 release/moc_categorieswin.o
 release/moc_mainwindow.o
 release/moc_qdynamicbox.o
+release/moc_qdynamicboxtouploaded.o
 release/moc_qdynamicbutton.o
 release/moc_registrationwin.o
 release/moc_secondwindow.o

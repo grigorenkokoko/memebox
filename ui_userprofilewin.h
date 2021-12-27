@@ -58,6 +58,10 @@ public:
     QVBoxLayout *verticalLayout_toLiked;
     QWidget *tab_3;
     QVBoxLayout *verticalLayout_3;
+    QGroupBox *groupBox_5;
+    QHBoxLayout *horizontalLayout_3;
+    QLineEdit *lineEdit_search;
+    QPushButton *pushButton_search;
     QScrollArea *scrollArea_2;
     QWidget *scrollAreaWidgetContents_2;
     QVBoxLayout *verticalLayout_13;
@@ -221,12 +225,29 @@ public:
         tab_3->setObjectName(QString::fromUtf8("tab_3"));
         verticalLayout_3 = new QVBoxLayout(tab_3);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
+        groupBox_5 = new QGroupBox(tab_3);
+        groupBox_5->setObjectName(QString::fromUtf8("groupBox_5"));
+        horizontalLayout_3 = new QHBoxLayout(groupBox_5);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        lineEdit_search = new QLineEdit(groupBox_5);
+        lineEdit_search->setObjectName(QString::fromUtf8("lineEdit_search"));
+
+        horizontalLayout_3->addWidget(lineEdit_search);
+
+        pushButton_search = new QPushButton(groupBox_5);
+        pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
+
+        horizontalLayout_3->addWidget(pushButton_search);
+
+
+        verticalLayout_3->addWidget(groupBox_5);
+
         scrollArea_2 = new QScrollArea(tab_3);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
         scrollArea_2->setWidgetResizable(true);
         scrollAreaWidgetContents_2 = new QWidget();
         scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
-        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 336, 458));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 336, 379));
         verticalLayout_13 = new QVBoxLayout(scrollAreaWidgetContents_2);
         verticalLayout_13->setObjectName(QString::fromUtf8("verticalLayout_13"));
         verticalLayout_toUploaded = new QVBoxLayout();
@@ -359,7 +380,7 @@ public:
         scrollArea_4->setWidgetResizable(true);
         scrollAreaWidgetContents_6 = new QWidget();
         scrollAreaWidgetContents_6->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_6"));
-        scrollAreaWidgetContents_6->setGeometry(QRect(0, 0, 310, 214));
+        scrollAreaWidgetContents_6->setGeometry(QRect(0, 0, 59, 24));
         verticalLayout_10 = new QVBoxLayout(scrollAreaWidgetContents_6);
         verticalLayout_10->setObjectName(QString::fromUtf8("verticalLayout_10"));
         verticalLayout_9 = new QVBoxLayout();
@@ -392,7 +413,7 @@ public:
 
         retranslateUi(userProfileWin);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
         tabWidget_2->setCurrentIndex(0);
 
 
@@ -413,6 +434,8 @@ public:
         pushButton_newPass->setText(QCoreApplication::translate("userProfileWin", "\320\230\320\267\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("userProfileWin", "\320\237\321\200\320\276\321\204\320\270\320\273\321\214", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\275\321\200\320\260\320\262\320\270\320\262\321\210\320\270\320\265\321\201\321\217", nullptr));
+        groupBox_5->setTitle(QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\270\321\201\320\272 \320\277\320\276 \320\272\320\260\321\202\320\265\320\263\320\276\321\200\320\270\321\217\320\274", nullptr));
+        pushButton_search->setText(QCoreApplication::translate("userProfileWin", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QCoreApplication::translate("userProfileWin", "\320\233\320\265\320\275\321\202\320\260", nullptr));
         groupBox_2->setTitle(QCoreApplication::translate("userProfileWin", "\320\222\321\213\320\261\321\200\320\260\321\202\321\214 \321\204\320\260\320\271\320\273", nullptr));
         pushButton_3->setText(QCoreApplication::translate("userProfileWin", "\320\222\321\213\320\261\321\200\320\260\321\202\321\214 \321\204\320\260\320\271\320\273", nullptr));

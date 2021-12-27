@@ -4,12 +4,15 @@
 #include <QJsonArray>
 #include <QMessageBox>
 #include <QScrollBar>
+#include <QString>
+#include <QMessageBox>
 
 #include "userprofilewin.h"
 #include "ui_userprofilewin.h"
 #include "qdynamiccheckbox.h"
 #include "qdynamiccheckboxtopost.h"
 #include "qdynamicbox.h"
+#include "qdynamicboxtouploaded.h"
 
 
 userProfileWin::userProfileWin(QWidget *parent) :
@@ -28,9 +31,7 @@ userProfileWin::userProfileWin(QWidget *parent) :
     QScrollBar *scrollBarToLiked = ui->scrollArea->verticalScrollBar();
     connect(scrollBarToLiked, SIGNAL(valueChanged(int)), this, SLOT(slotAreaMaxValueToLiked(int)));
 
-    add_to_uploaded();
-    add_to_uploaded();
-    add_to_uploaded();
+
     QScrollBar *scrollBarToUploaded = ui->scrollArea_2->verticalScrollBar();
     connect(scrollBarToUploaded, SIGNAL(valueChanged(int)), this, SLOT(slotAreaMaxValueToUploaded(int)));
 }
@@ -367,14 +368,15 @@ void userProfileWin::add_to_liked()
 }
 
 
-void userProfileWin::add_to_uploaded()
+void userProfileWin::add_to_uploaded(QString search)
 {
     /*
      *  Нужен стоп от сервера
      */
+    qDebug() << search;
 
-    QDynamicBox *Box = new QDynamicBox(this);  // создаем новый GroupBox
-    Box->setObjectName("groupBox_" + QString::number(Box->getID()));
+    QDynamicBoxToUploaded *Box = new QDynamicBoxToUploaded(this);  // создаем новый GroupBox
+    Box->setObjectName("groupBoxToUploaded_" + QString::number(Box->getID()));
     //qDebug() << Box->getID();
     ui->verticalLayout_toUploaded->addWidget(Box, 1);  // Помещвем новый Box в слой verticalLayout_2
     QVBoxLayout *VLayout = new QVBoxLayout(Box);  // Создаем новый слой verticalLayout
@@ -400,7 +402,7 @@ void userProfileWin::add_to_uploaded()
     buttonLike->BoxNumber = Box->getID();
     //buttonLike->setIcon(QIcon(":/resource/img/like.png"));  // добавление иконки на кнопку
     buttonLike->setIconSize(QSize(20, 20));  // размер кнопки
-    connect(buttonLike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_like_clicked()));  // связываем сигнал нажатия кнопки и слот нажатия кнопки
+    connect(buttonLike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_like_touploaded_clicked()));  // связываем сигнал нажатия кнопки и слот нажатия кнопки
 
     QDynamicButton *buttonDislike = new QDynamicButton();
     HLayout->addWidget(buttonDislike);
@@ -408,7 +410,7 @@ void userProfileWin::add_to_uploaded()
     buttonDislike->BoxNumber = Box->getID();
     //buttonDislike->setIcon(QIcon(":/resource/img/dislike.png"));
     buttonDislike->setIconSize(QSize(20, 20));
-    connect(buttonDislike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_dislike_clicked()));
+    connect(buttonDislike, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_dislike_touploaded_clicked()));
 
     QLabel *labelDisLike = new QLabel();
     HLayout->addWidget(labelDisLike);
@@ -423,7 +425,7 @@ void userProfileWin::add_to_uploaded()
     buttonPlus->BoxNumber = Box->getID();
     buttonPlus->setIcon(QIcon(":/resource/img/plus.png"));
     buttonPlus->setIconSize(QSize(20, 20));
-    connect(buttonPlus, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_plus_clicked()));
+    connect(buttonPlus, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_plus_touploaded_clicked()));
 
     QDynamicButton *buttonDownload = new QDynamicButton();
     HLayout->addWidget(buttonDownload);
@@ -431,7 +433,7 @@ void userProfileWin::add_to_uploaded()
     buttonDownload->BoxNumber = Box->getID();
     buttonDownload->setIcon(QIcon(":/resource/img/download.png"));
     buttonDownload->setIconSize(QSize(20, 20));
-    connect(buttonDownload, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_download_clicked()));
+    connect(buttonDownload, SIGNAL(clicked()), this, SLOT(slot_on_pushButton_download_touploaded_clicked()));
 
     // выставление иконки like/dislike по like_status
     Box->like_status = NOTHING;
@@ -578,6 +580,128 @@ void userProfileWin::slot_on_pushButton_plus_clicked()
     }
 }
 
+// Дубляж для Uploaded
+void userProfileWin::slot_on_pushButton_like_touploaded_clicked()
+{
+    QDynamicButton *buttonLike = (QDynamicButton*) sender();
+    QDynamicBoxToUploaded *Box = this->findChild<QDynamicBoxToUploaded *>("groupBoxToUploaded_" + QString::number(buttonLike->BoxNumber));
+    QDynamicButton *buttonDisLike = this->findChild<QDynamicButton *>("buttonDisLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelLike = this->findChild<QLabel *>("labelLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelDisLike = this->findChild<QLabel *>("labelDisLike_" + QString::number(buttonLike->BoxNumber));
+
+
+    switch (Box->like_status)
+    {
+    case LIKE:
+        Box->like_status = NOTHING;
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        Box->numberLike--;
+        labelLike->setText(QString::number(Box->numberLike));
+        break;
+    case DISLIKE:
+        Box->like_status = LIKE;
+        buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
+        buttonDisLike->setIcon(QIcon(":/resource/img/dislike.png"));
+        Box->numberDisLike--;
+        Box->numberLike++;
+        labelLike->setText(QString::number(Box->numberLike));
+        labelDisLike->setText(QString::number(Box->numberDisLike));
+        break;
+    case NOTHING:
+        Box->like_status = LIKE;
+        buttonLike->setIcon(QIcon(":/resource/img/like_click.png"));
+        Box->numberLike++;
+        labelLike->setText(QString::number(Box->numberLike));
+        break;
+    }
+}
+
+void userProfileWin::slot_on_pushButton_dislike_touploaded_clicked()
+{
+    QDynamicButton *buttonDisLike = (QDynamicButton*) sender();
+    QDynamicBoxToUploaded *Box = this->findChild<QDynamicBoxToUploaded *>("groupBoxToUploaded_" + QString::number(buttonDisLike->BoxNumber));
+    QDynamicButton *buttonLike = this->findChild<QDynamicButton *>("buttonLike_" + QString::number(buttonDisLike->BoxNumber));
+    QLabel *labelLike = this->findChild<QLabel *>("labelLike_" + QString::number(buttonLike->BoxNumber));
+    QLabel *labelDisLike = this->findChild<QLabel *>("labelDisLike_" + QString::number(buttonLike->BoxNumber));
+
+    switch (Box->like_status)
+    {
+    case DISLIKE:
+        Box->like_status = NOTHING;
+        buttonDisLike->setIcon(QIcon(":/resource/img/dislike.png"));
+        Box->numberDisLike--;
+        labelDisLike->setText(QString::number(Box->numberDisLike));
+        break;
+    case LIKE:
+        Box->like_status = DISLIKE;
+        buttonLike->setIcon(QIcon(":/resource/img/like.png"));
+        buttonDisLike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        Box->numberLike--;
+        Box->numberDisLike++;
+        labelLike->setText(QString::number(Box->numberLike));
+        labelDisLike->setText(QString::number(Box->numberDisLike));
+        break;
+    case NOTHING:
+        Box->like_status = DISLIKE;
+        buttonDisLike->setIcon(QIcon(":/resource/img/dislike_click.png"));
+        Box->numberDisLike++;
+        labelDisLike->setText(QString::number(Box->numberDisLike));
+        break;
+    }
+}
+
+void userProfileWin::slot_on_pushButton_download_touploaded_clicked()
+{
+    QDynamicButton *buttonDownload = (QDynamicButton*) sender();
+    QDynamicBoxToUploaded *Box = this->findChild<QDynamicBoxToUploaded *>("groupBoxToUploaded_" + QString::number(buttonDownload->BoxNumber));
+    QString fileDirectory = QFileDialog::getExistingDirectory(this);
+
+    qDebug() << fileDirectory;
+
+    /*
+     *  Скачивание картинки на устройство
+     */
+}
+
+void userProfileWin::slot_on_pushButton_plus_touploaded_clicked()
+{
+    QDynamicButton *buttonPlus = (QDynamicButton*) sender();
+    QDynamicBoxToUploaded *Box = this->findChild<QDynamicBoxToUploaded *>("groupBoxToUploaded_" + QString::number(buttonPlus->BoxNumber));
+    QLabel *categLabel = this->findChild<QLabel *>("categLabel_" + QString::number(Box->getID()));
+
+    // Пример Json
+    QString Json = "{\"categories\":[\"categories_1\",\"categories_2\",\"categories_3\",\"categories_4\",\"categories_5\"],\"name\":\"\"}";
+
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(Json.toUtf8());
+    QJsonObject jsonObject = jsonDoc.object();
+    QJsonArray jsonArray = jsonObject["categories"].toArray();
+
+
+
+    int i = 1;
+    switch (buttonPlus->clickStatus)
+    {
+    case NO_CLICKED:
+        buttonPlus->clickStatus = CLICKED;
+        categLabel->show();
+
+        categLabel->setText(jsonArray.at(0).toString());
+        while (jsonArray.at(i) != QJsonValue::Undefined)
+        {
+            categLabel->setText(categLabel->text() + ", \n" + jsonArray.at(i).toString());
+            i++;
+        }
+
+        break;
+    case CLICKED:
+        buttonPlus->clickStatus = NO_CLICKED;
+        categLabel->hide();
+        break;
+    }
+}
+
+
+
 
 void userProfileWin::slotAreaMaxValueToLiked(int value)
 {
@@ -593,6 +717,37 @@ void userProfileWin::slotAreaMaxValueToUploaded(int value)
     QScrollBar *scrollBar = (QScrollBar*) sender();
     if(value == scrollBar->maximum())
     {
-        add_to_uploaded();
+        QString search = ui->lineEdit_search->text();
+        add_to_uploaded(search);
     }
 }
+
+void userProfileWin::on_pushButton_search_clicked()
+{
+    //Очистка окна
+    int numberCheckBox = ui->verticalLayout_toUploaded->count();
+    for(int i = 0; i < numberCheckBox; i++)
+    {
+        QDynamicBoxToUploaded *Box = this->findChild<QDynamicBoxToUploaded *>("groupBoxToUploaded_" + QString::number(i + 1));
+        delete Box;
+    }
+    QDynamicBoxToUploaded::ResID = 0;
+
+    QScrollBar *scrollBarToUploaded = ui->scrollArea_2->verticalScrollBar();
+    scrollBarToUploaded->setValue(scrollBarToUploaded->minimum());
+
+
+    QString search = ui->lineEdit_search->text();
+
+    if (search == "")
+    {
+        QMessageBox::warning(this, "Сообщения", "Поиск пуст");
+        return;
+    }
+
+    //qDebug() << search;
+    add_to_uploaded(search);
+    add_to_uploaded(search);
+    add_to_uploaded(search);
+}
+

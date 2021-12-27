@@ -2,6 +2,7 @@ debug/categorieswin.o
 debug/main.o
 debug/mainwindow.o
 debug/qdynamicbox.o
+debug/qdynamicboxtouploaded.o
 debug/qdynamicbutton.o
 debug/qdynamiccheckbox.o
 debug/qdynamiccheckboxtofile.o
@@ -14,6 +15,7 @@ debug/qrc_resource.o
 debug/moc_categorieswin.o
 debug/moc_mainwindow.o
 debug/moc_qdynamicbox.o
+debug/moc_qdynamicboxtouploaded.o
 debug/moc_qdynamicbutton.o
 debug/moc_registrationwin.o
 debug/moc_secondwindow.o

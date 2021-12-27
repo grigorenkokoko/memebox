@@ -13,6 +13,7 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     qdynamicbox.cpp \
+    qdynamicboxtouploaded.cpp \
     qdynamicbutton.cpp \
     qdynamiccheckbox.cpp \
     qdynamiccheckboxtofile.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     categorieswin.h \
     mainwindow.h \
     qdynamicbox.h \
+    qdynamicboxtouploaded.h \
     qdynamicbutton.h \
     qdynamiccheckbox.h \
     qdynamiccheckboxtofile.h \

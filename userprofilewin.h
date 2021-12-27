@@ -7,6 +7,7 @@
 
 #include <QDialog>
 #include <QFile>
+#include <QString>
 
 namespace Ui {
 class userProfileWin;
@@ -46,12 +47,19 @@ private slots:
 
     void add_to_liked();
 
-    void add_to_uploaded();
+    void add_to_uploaded(QString search);
 
     void slot_on_pushButton_like_clicked();
     void slot_on_pushButton_dislike_clicked();
     void slot_on_pushButton_download_clicked();
     void slot_on_pushButton_plus_clicked();
+
+    void slot_on_pushButton_like_touploaded_clicked();
+    void slot_on_pushButton_dislike_touploaded_clicked();
+    void slot_on_pushButton_download_touploaded_clicked();
+    void slot_on_pushButton_plus_touploaded_clicked();
+
+    void on_pushButton_search_clicked();
 
 public slots:
     void slotAreaMaxValueToLiked(int value);
